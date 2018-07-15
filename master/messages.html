@@ -85,7 +85,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Ongoing Messages</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#audio">Audio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#transcript">Transcript</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ping">Ping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ping-pong">Ping / pong</a></li>
 </ul>
 </li>
@@ -194,13 +193,9 @@
 <p>If two transcript are sent with the same <cite>blocId</cite>, only the last one should be considered.
 For each <code class="code docutils literal notranslate"><span class="pre">blocId</span></code>, we will send a transcript with a <code class="code docutils literal notranslate"><span class="pre">isFinal</span></code> field set to <code class="code docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </div>
-<div class="section" id="ping">
-<h2>Ping<a class="headerlink" href="#ping" title="Permalink to this headline">¶</a></h2>
-<p>We expect to receive at leastone message every 15s. If at any step of the connection (captioner ready or not), you think you may have a lrge period without</p>
-</div>
 <div class="section" id="ping-pong">
 <h2>Ping / pong<a class="headerlink" href="#ping-pong" title="Permalink to this headline">¶</a></h2>
-<p>We expect to receive at least one message every 15s. If at any step of the connection (captioner ready or not), you think you may have a lrge period without sending message, you must send <code class="code docutils literal notranslate"><span class="pre">ping</span></code> message. We will send back a <cite>pong</cite> message.</p>
+<p>We expect to receive at least one message every 15s. If at any step of the connection (captioner ready or not), you think you may have a large period without sending message, you must send <code class="code docutils literal notranslate"><span class="pre">ping</span></code> message. We will send back a <cite>pong</cite> message.</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">ping</span></code> or <code class="code docutils literal notranslate"><span class="pre">pong</span></code>.</li>
 </ul>
