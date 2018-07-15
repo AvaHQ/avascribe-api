@@ -15,7 +15,7 @@ When opening a websocket, client should send an :code:`hello` message which cont
 
 - **type** (`string`): :code:`hello`.
 - **token** (`string`): valid API token.
-- **encoding** (`string`): Encoding of audio data which will be sent. Valid values are :code:`OGG_OPUS`.
+- **encoding** (`string`): Encoding of audio data which will be sent. Valid values are :code:`LINAR_16`.
 - **sampleRateHertz** (`integer`). Sample rate in Hertz of the audio data which will be sent. Valid values are :code:`8000`.
 - **chunkLengthMs** (`integer`). Duration in ms of the chunks of the audio data which will be sent. Valid values are :code:`100`.
 
