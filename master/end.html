@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Avascribe API 0.1 documentation</title>
+  <title>End Connection &mdash; Avascribe API 0.1 documentation</title>
   
 
   
@@ -28,8 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/banner.css" type="text/css" />
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Ongoing Messages" href="messages.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -79,10 +79,14 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Connection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="messages.html">Ongoing Messages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="end.html">End Connection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">End Connection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#normal-case">Normal case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-case">Error case</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -128,12 +132,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>End Connection</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/end.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -145,11 +151,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="end-connection">
+<h1>End Connection<a class="headerlink" href="#end-connection" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="normal-case">
+<h2>Normal case<a class="headerlink" href="#normal-case" title="Permalink to this headline">¶</a></h2>
+<p>When the call is finished, client should send a <code class="code docutils literal notranslate"><span class="pre">end</span></code> message over the websocket:</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">end</span></code>.</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Ava will consider as error all the ws connection which are closed without <code class="code docutils literal notranslate"><span class="pre">end</span></code> message.</p>
+</div>
+<div class="section" id="error-case">
+<h2>Error case<a class="headerlink" href="#error-case" title="Permalink to this headline">¶</a></h2>
+<p>For various reason, ava could send <code class="code docutils literal notranslate"><span class="pre">error</span></code> message.
+In this case, you should expect that the underlying websocket connection will be closed by us after sending this error message.</p>
+</div>
 </div>
 
 
@@ -157,6 +179,13 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="messages.html" class="btn btn-neutral" title="Ongoing Messages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -187,11 +216,11 @@
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
-            <dd><a href="0.1/index.html">0.1</a></dd>
+            <dd><a href="../0.1/index.html">0.1</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="master/genindex.html">master</a></dd>
+            <dd><a href="end.html">master</a></dd>
         </dl>
     </div>
 </div>

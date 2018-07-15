@@ -1,0 +1,110 @@
+Setup Connection
+================
+
+Endpoint
+--------
+Production endpoint:
+ - :code:`https://scribe.ava.me/v1/`
+
+
+Setup connection
+----------------
+
+In order to open a websocket,you need to perform a :code:`POST` call on :code:`/call`. You will get in return a single-use websocket url.
+
+
+Request body
+............
+
+The request body should contains the following keys:
+
+- **token** (`string`): valid API token.
+- **encoding** (`string`): Encoding of audio data which will be sent. Valid values are :code:`LINEAR16`.
+- **sampleRateHertz** (`integer`). Sample rate in Hertz of the audio data which will be sent. Valid values are :code:`8000`.
+- **chunkLengthMs** (`integer`). Duration in ms of the chunks of the audio data which will be sent. Valid values are :code:`100`.
+
+
+Exemple:
+
+.. code-block:: json
+
+    {
+        "encoding": "LINEAR16",
+        "sampleRateHertz": 8000,
+        "chunkLengthMs": 100,
+        "token": "ibabcae6a44ee3b6618774d422e3b0748049aca3f95143fa9c2760"
+    }
+
+Request response:
+.................
+
+- **ok** (`boolean`)
+- **url** (`string`): `optional` - the url to connect to.
+- **error** (`object`): `optional` - An error object.
+- **callId** (`string`): `optional` - Id of the call. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).
+
+Exemple:
+
+.. code-block:: json
+
+    {
+	"ok": true,
+        "url": "wss://scribe.ava.me/ws/ee3b6618774d422e3b",
+	"callId": "5b49d758ec2040000121aaf5"
+    }
+
+.. code-block:: json
+
+    {
+        "ok": false,
+        "error": {
+            "code": 403,
+            "message": "Invalid API Token"
+        }
+    }
+
+
+
+Captioner Ready
+---------------
+
+When a captioner is ready to handle the conversation, Ava send a :code:`ready` message to the client, which contains:
+
+- **type** (`string`): :code:`ready`.
+
+Exemple:
+
+.. code-block:: json
+
+    {
+	"type": "ready"
+    }
+
+At this points, client can start to stream audio (see :doc:`messages`).
+
+
+
+Errors
+------
+
+For various reasons, we may send :code:`error` messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Errors message contains:
+
+- **type** (`error`): :code:`error`. (this field is ommitted in case of an http response).
+- **code** (`integer`): error code
+- **message** (`string`): error message
+
+Exemple:
+
+.. code-block:: json
+
+    {
+	"type": "error",
+	"code": "403",
+	"message": "Invalid API Token"
+    }
+
+Here is the list of all the possible errors:
+
+- **Invalid API Token** (`403`): Client is not authorized to connect to the server.
+- ... (to be completed)
+

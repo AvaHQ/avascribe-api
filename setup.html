@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>General &mdash; Avascribe API 0.1 documentation</title>
+  <title>Setup Connection &mdash; Avascribe API 0.1 documentation</title>
   
 
   
@@ -81,14 +81,19 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">General</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup Connection</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#endpoint">Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hello">Hello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Setup connection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#request-body">Request body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request-response">Request response:</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#captioner-ready">Captioner Ready</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#errors">Errors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="messages.html">Ongoing Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="end.html">End Connection</a></li>
 </ul>
 
             
@@ -134,13 +139,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>General</li>
+      <li>Setup Connection</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/general.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/setup.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -153,32 +158,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="general">
-<h1>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="setup-connection">
+<h1>Setup Connection<a class="headerlink" href="#setup-connection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="endpoint">
 <h2>Endpoint<a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt>Production endpoints:</dt>
+<dt>Production endpoint:</dt>
 <dd><ul class="first last simple">
-<li><code class="code docutils literal notranslate"><span class="pre">wss://scribe.ava.me/v1/</span></code></li>
+<li><code class="code docutils literal notranslate"><span class="pre">https://scribe.ava.me/v1/</span></code></li>
 </ul>
 </dd>
 </dl>
 </div>
-<div class="section" id="hello">
-<h2>Hello<a class="headerlink" href="#hello" title="Permalink to this headline">¶</a></h2>
-<p>When opening a websocket, client should send an <code class="code docutils literal notranslate"><span class="pre">hello</span></code> message which contains:</p>
+<div class="section" id="id1">
+<h2>Setup connection<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>In order to open a websocket,you need to perform a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> call on <code class="code docutils literal notranslate"><span class="pre">/call</span></code>. You will get in return a single-use websocket url.</p>
+<div class="section" id="request-body">
+<h3>Request body<a class="headerlink" href="#request-body" title="Permalink to this headline">¶</a></h3>
+<p>The request body should contains the following keys:</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">hello</span></code>.</li>
 <li><strong>token</strong> (<cite>string</cite>): valid API token.</li>
-<li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">OGG_OPUS</span></code>.</li>
+<li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
 <li><strong>sampleRateHertz</strong> (<cite>integer</cite>). Sample rate in Hertz of the audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
 <li><strong>chunkLengthMs</strong> (<cite>integer</cite>). Duration in ms of the chunks of the audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
 </ul>
 <p>Exemple:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;OGG_OPUS&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;LINEAR16&quot;</span><span class="p">,</span>
     <span class="nt">&quot;sampleRateHertz&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
     <span class="nt">&quot;chunkLengthMs&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
     <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;ibabcae6a44ee3b6618774d422e3b0748049aca3f95143fa9c2760&quot;</span>
@@ -186,17 +192,42 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="request-response">
+<h3>Request response:<a class="headerlink" href="#request-response" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>ok</strong> (<cite>boolean</cite>)</li>
+<li><strong>url</strong> (<cite>string</cite>): <cite>optional</cite> - the url to connect to.</li>
+<li><strong>error</strong> (<cite>object</cite>): <cite>optional</cite> - An error object.</li>
+<li><strong>callId</strong> (<cite>string</cite>): <cite>optional</cite> - Id of the call. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ok&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;wss://scribe.ava.me/ws/ee3b6618774d422e3b&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;callId&quot;</span><span class="p">:</span> <span class="s2">&quot;5b49d758ec2040000121aaf5&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ok&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">403</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid API Token&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="captioner-ready">
 <h2>Captioner Ready<a class="headerlink" href="#captioner-ready" title="Permalink to this headline">¶</a></h2>
 <p>When a captioner is ready to handle the conversation, Ava send a <code class="code docutils literal notranslate"><span class="pre">ready</span></code> message to the client, which contains:</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">ready</span></code>.</li>
-<li><strong>callId</strong> (<cite>string</cite>): Id of the call. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).</li>
 </ul>
 <p>Exemple:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;callId&quot;</span><span class="p">:</span> <span class="s2">&quot;5b49d758ec2040000121aaf5&quot;</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ready&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -206,7 +237,7 @@
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <p>For various reasons, we may send <code class="code docutils literal notranslate"><span class="pre">error</span></code> messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Errors message contains:</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>error</cite>): <code class="code docutils literal notranslate"><span class="pre">error</span></code>.</li>
+<li><strong>type</strong> (<cite>error</cite>): <code class="code docutils literal notranslate"><span class="pre">error</span></code>. (this field is ommitted in case of an http response).</li>
 <li><strong>code</strong> (<cite>integer</cite>): error code</li>
 <li><strong>message</strong> (<cite>string</cite>): error message</li>
 </ul>
@@ -221,6 +252,7 @@
 <p>Here is the list of all the possible errors:</p>
 <ul class="simple">
 <li><strong>Invalid API Token</strong> (<cite>403</cite>): Client is not authorized to connect to the server.</li>
+<li>… (to be completed)</li>
 </ul>
 </div>
 </div>
@@ -263,17 +295,17 @@
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
         <span class="fa fa-book"> Other Versions</span>
-        v: 0.1
+        v: master
         <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
         <dl>
             <dt>Tags</dt>
-            <dd><a href="general.html">0.1</a></dd>
+            <dd><a href="0.1/index.html">0.1</a></dd>
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../master/index.html">master</a></dd>
+            <dd><a href="master/setup.html">master</a></dd>
         </dl>
     </div>
 </div>

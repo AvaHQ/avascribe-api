@@ -29,7 +29,8 @@
   <link rel="stylesheet" href="_static/banner.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="General" href="general.html" /> 
+    <link rel="next" title="End Connection" href="end.html" />
+    <link rel="prev" title="Setup Connection" href="setup.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -80,12 +81,15 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="general.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Connection</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Ongoing Messages</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#audio">Audio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#transcript">Transcript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ping">Ping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ping-pong">Ping / pong</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="end.html">End Connection</a></li>
 </ul>
 
             
@@ -190,6 +194,23 @@
 <p>If two transcript are sent with the same <cite>blocId</cite>, only the last one should be considered.
 For each <code class="code docutils literal notranslate"><span class="pre">blocId</span></code>, we will send a transcript with a <code class="code docutils literal notranslate"><span class="pre">isFinal</span></code> field set to <code class="code docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </div>
+<div class="section" id="ping">
+<h2>Ping<a class="headerlink" href="#ping" title="Permalink to this headline">¶</a></h2>
+<p>We expect to receive at leastone message every 15s. If at any step of the connection (captioner ready or not), you think you may have a lrge period without</p>
+</div>
+<div class="section" id="ping-pong">
+<h2>Ping / pong<a class="headerlink" href="#ping-pong" title="Permalink to this headline">¶</a></h2>
+<p>We expect to receive at least one message every 15s. If at any step of the connection (captioner ready or not), you think you may have a lrge period without sending message, you must send <code class="code docutils literal notranslate"><span class="pre">ping</span></code> message. We will send back a <cite>pong</cite> message.</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">ping</span></code> or <code class="code docutils literal notranslate"><span class="pre">pong</span></code>.</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ping&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -200,8 +221,10 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="end.html" class="btn btn-neutral float-right" title="End Connection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="general.html" class="btn btn-neutral" title="General" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="setup.html" class="btn btn-neutral" title="Setup Connection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

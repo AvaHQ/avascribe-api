@@ -10,8 +10,9 @@ Welcome to Avascribe API's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   general
+   setup
    messages
+   end
 
 
 Indices and tables

@@ -45,3 +45,28 @@ Exemple:
 If two transcript are sent with the same `blocId`, only the last one should be considered.
 For each :code:`blocId`, we will send a transcript with a :code:`isFinal` field set to :code:`true`.
 
+
+Ping
+----
+
+We expect to receive at leastone message every 15s. If at any step of the connection (captioner ready or not), you think you may have a lrge period without 
+
+Ping / pong
+-----------
+
+We expect to receive at least one message every 15s. If at any step of the connection (captioner ready or not), you think you may have a lrge period without sending message, you must send :code:`ping` message. We will send back a `pong` message.
+
+- **type** (`string`): :code:`ping` or :code:`pong`.
+
+Exemple:
+
+.. code-block:: json
+
+    {
+	"type": "ping",
+    }
+
+
+
+
+
