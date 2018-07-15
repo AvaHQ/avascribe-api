@@ -1,0 +1,47 @@
+Ongoing Messages
+================
+
+Audio
+-----
+
+In order to stream the audio, the client send :code:`audio` with the audio to transcribe.
+
+- **type** (`string`): :code:`audio`.
+- **audio** (`string`): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in :code:`hello` message).
+- **timestamp** (`integer`): timestamp of the beginning of the audio.
+
+Exemple:
+
+.. code-block:: json
+
+    {
+	"type": "audio",
+	"audio": "...",
+        "timestamp": 1531587765
+    }
+
+
+Transcript
+----------
+
+We return transcript to the client in :code:`transcript` message:
+
+- **type** (`string`): :code:`transcript`.
+- **blocId** (`string`): id of the trancript.
+- **transcript** (`string`): transcript text.
+- **isFinal** (`boolean`): if :code:`true`, then no more transcript associate to this :code:`blocId` will be published.
+
+Exemple:
+
+.. code-block:: json
+
+    {
+	"type": "transcript",
+        "blocId": "5b49d758ec2040000121aaf5",
+        "transcript": "Hello, World.",
+        "isFinal": true
+    }
+
+If two transcript are sent with the same `blocId`, only the last one should be considered.
+For each :code:`blocId`, we will send a transcript with a :code:`isFinal` field set to :code:`true`.
+
