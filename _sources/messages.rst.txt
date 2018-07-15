@@ -7,7 +7,7 @@ Audio
 In order to stream the audio, the client send :code:`audio` with the audio to transcribe.
 
 - **type** (`string`): :code:`audio`.
-- **audio** (`string`): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in :code:`hello` message).
+- **audio** (`string`): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).
 - **timestamp** (`integer`): timestamp of the beginning of the audio.
 
 Exemple:
