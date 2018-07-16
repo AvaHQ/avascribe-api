@@ -12,11 +12,12 @@ In order to stream the audio, the client sends :code:`audio` with the audio to t
 
 Exemple:
 
+
 .. code-block:: json
 
     {
 	"type": "audio",
-	"audio": [22, 0, -17, ..., 112],
+	"audio": [22, 0, -17, 112],
         "timestamp": 1531587765
     }
 

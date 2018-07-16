@@ -1,4 +1,4 @@
-Welcome to Avascribe API's documentation!
+Avascribe API's documentation
 =========================================
 
 Please use our `github`_ repo issues / pull requests for your questions.
