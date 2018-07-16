@@ -4,13 +4,13 @@ Setup Connection
 Endpoint
 --------
 Production endpoint:
- - :code:`https://scribe.ava.me/v1/`
+ - :code:`https://scribe.ava.me/api/v1/`
 
 
 Setup connection
 ----------------
 
-In order to open a websocket,you need to perform a :code:`POST` call on :code:`/call`. You will get in return a single-use websocket url.
+In order to open a websocket,you need to perform a :code:`POST` call on :code:`/conversation`. You will get in return a single-use websocket url.
 
 
 Request body
@@ -41,7 +41,7 @@ Request response:
 - **ok** (`boolean`)
 - **url** (`string`): `optional` - the url to connect to.
 - **error** (`object`): `optional` - An error object.
-- **callId** (`string`): `optional` - Id of the call. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).
+- **convoId** (`string`): `optional` - Id of the conversation. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).
 
 Exemple:
 
@@ -49,8 +49,8 @@ Exemple:
 
     {
 	"ok": true,
-        "url": "wss://scribe.ava.me/ws/ee3b6618774d422e3b",
-	"callId": "5b49d758ec2040000121aaf5"
+        "url": "wss://scribe.ava.me/ws/5b49d758ec2040000121aaf?5ee3b6618774d422e3b",
+	"convoId": "5b49d758ec2040000121aaf5"
     }
 
 .. code-block:: json

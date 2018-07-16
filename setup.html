@@ -165,14 +165,14 @@
 <dl class="docutils">
 <dt>Production endpoint:</dt>
 <dd><ul class="first last simple">
-<li><code class="code docutils literal notranslate"><span class="pre">https://scribe.ava.me/v1/</span></code></li>
+<li><code class="code docutils literal notranslate"><span class="pre">https://scribe.ava.me/api/v1/</span></code></li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="id1">
 <h2>Setup connection<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>In order to open a websocket,you need to perform a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> call on <code class="code docutils literal notranslate"><span class="pre">/call</span></code>. You will get in return a single-use websocket url.</p>
+<p>In order to open a websocket,you need to perform a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> call on <code class="code docutils literal notranslate"><span class="pre">/conversation</span></code>. You will get in return a single-use websocket url.</p>
 <div class="section" id="request-body">
 <h3>Request body<a class="headerlink" href="#request-body" title="Permalink to this headline">¶</a></h3>
 <p>The request body should contains the following keys:</p>
@@ -198,13 +198,13 @@
 <li><strong>ok</strong> (<cite>boolean</cite>)</li>
 <li><strong>url</strong> (<cite>string</cite>): <cite>optional</cite> - the url to connect to.</li>
 <li><strong>error</strong> (<cite>object</cite>): <cite>optional</cite> - An error object.</li>
-<li><strong>callId</strong> (<cite>string</cite>): <cite>optional</cite> - Id of the call. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).</li>
+<li><strong>convoId</strong> (<cite>string</cite>): <cite>optional</cite> - Id of the conversation. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).</li>
 </ul>
 <p>Exemple:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ok&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;wss://scribe.ava.me/ws/ee3b6618774d422e3b&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;callId&quot;</span><span class="p">:</span> <span class="s2">&quot;5b49d758ec2040000121aaf5&quot;</span>
+    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;wss://scribe.ava.me/ws/5b49d758ec2040000121aaf?5ee3b6618774d422e3b&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;convoId&quot;</span><span class="p">:</span> <span class="s2">&quot;5b49d758ec2040000121aaf5&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>

@@ -49,7 +49,7 @@ For each :code:`blocId`, we will send a transcript with a :code:`isFinal` field 
 Ping / pong
 -----------
 
-We expect to receive at least one message every 15s. If at any step of the connection (captioner ready or not), you think you may have a large period without sending message, you must send :code:`ping` message. We will send back a `pong` message.
+zsh:1: command not found: q
 
 - **type** (`string`): :code:`ping` or :code:`pong`.
 
