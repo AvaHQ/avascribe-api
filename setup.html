@@ -175,12 +175,12 @@
 <p>In order to open a websocket,you need to perform a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> call on <code class="code docutils literal notranslate"><span class="pre">/conversation</span></code>. You will get in return a single-use websocket url.</p>
 <div class="section" id="request-body">
 <h3>Request body<a class="headerlink" href="#request-body" title="Permalink to this headline">¶</a></h3>
-<p>The request body should contains the following keys:</p>
+<p>The request body should contain the following keys:</p>
 <ul class="simple">
 <li><strong>token</strong> (<cite>string</cite>): valid API token.</li>
 <li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
 <li><strong>sampleRateHertz</strong> (<cite>integer</cite>). Sample rate in Hertz of the audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
-<li><strong>chunkLengthMs</strong> (<cite>integer</cite>). Duration in ms of the chunks of the audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
+<li><strong>chunkLengthMs</strong> (<cite>integer</cite>). Duration in ms of the chunks of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
 </ul>
 <p>Exemple:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -221,7 +221,7 @@
 </div>
 <div class="section" id="captioner-ready">
 <h2>Captioner Ready<a class="headerlink" href="#captioner-ready" title="Permalink to this headline">¶</a></h2>
-<p>When a captioner is ready to handle the conversation, Ava send a <code class="code docutils literal notranslate"><span class="pre">ready</span></code> message to the client, which contains:</p>
+<p>When a captioner is ready to handle the conversation, Ava sends a <code class="code docutils literal notranslate"><span class="pre">ready</span></code> message to the client, which contains:</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">ready</span></code>.</li>
 </ul>
@@ -231,11 +231,11 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>At this points, client can start to stream audio (see <a class="reference internal" href="messages.html"><span class="doc">Ongoing Messages</span></a>).</p>
+<p>At this point, client can start to stream audio (see <a class="reference internal" href="messages.html"><span class="doc">Ongoing Messages</span></a>).</p>
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<p>For various reasons, we may send <code class="code docutils literal notranslate"><span class="pre">error</span></code> messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Errors message contains:</p>
+<p>For various reasons, we may send <code class="code docutils literal notranslate"><span class="pre">error</span></code> messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Error message contains:</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>error</cite>): <code class="code docutils literal notranslate"><span class="pre">error</span></code>. (this field is ommitted in case of an http response).</li>
 <li><strong>code</strong> (<cite>integer</cite>): error code</li>

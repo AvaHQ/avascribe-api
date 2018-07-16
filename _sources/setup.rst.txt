@@ -16,12 +16,12 @@ In order to open a websocket,you need to perform a :code:`POST` call on :code:`/
 Request body
 ............
 
-The request body should contains the following keys:
+The request body should contain the following keys:
 
 - **token** (`string`): valid API token.
 - **encoding** (`string`): Encoding of audio data which will be sent. Valid values are :code:`LINEAR16`.
 - **sampleRateHertz** (`integer`). Sample rate in Hertz of the audio data which will be sent. Valid values are :code:`8000`.
-- **chunkLengthMs** (`integer`). Duration in ms of the chunks of the audio data which will be sent. Valid values are :code:`100`.
+- **chunkLengthMs** (`integer`). Duration in ms of the chunks of audio data which will be sent. Valid values are :code:`100`.
 
 
 Exemple:
@@ -68,7 +68,7 @@ Exemple:
 Captioner Ready
 ---------------
 
-When a captioner is ready to handle the conversation, Ava send a :code:`ready` message to the client, which contains:
+When a captioner is ready to handle the conversation, Ava sends a :code:`ready` message to the client, which contains:
 
 - **type** (`string`): :code:`ready`.
 
@@ -80,14 +80,14 @@ Exemple:
 	"type": "ready"
     }
 
-At this points, client can start to stream audio (see :doc:`messages`).
+At this point, client can start to stream audio (see :doc:`messages`).
 
 
 
 Errors
 ------
 
-For various reasons, we may send :code:`error` messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Errors message contains:
+For various reasons, we may send :code:`error` messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Error message contains:
 
 - **type** (`error`): :code:`error`. (this field is ommitted in case of an http response).
 - **code** (`integer`): error code
