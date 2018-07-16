@@ -1,10 +1,11 @@
-.. Avascribe API documentation master file, created by
-   sphinx-quickstart on Sat Jul 14 17:07:37 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to Avascribe API's documentation!
 =========================================
+
+Please use our `github`_ repo issues / pull requests for your questions.
+
+
+.. _github: https://github.com/avahq/avascribe-api/
+
 
 .. toctree::
    :maxdepth: 2
@@ -14,10 +15,3 @@ Welcome to Avascribe API's documentation!
    messages
    end
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
