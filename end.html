@@ -155,7 +155,7 @@
 <h1>End Connection<a class="headerlink" href="#end-connection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="normal-case">
 <h2>Normal case<a class="headerlink" href="#normal-case" title="Permalink to this headline">¶</a></h2>
-<p>When the call is finished, client should send a <code class="code docutils literal notranslate"><span class="pre">end</span></code> message over the websocket:</p>
+<p>When the conversation is finished, the client should send a <code class="code docutils literal notranslate"><span class="pre">end</span></code> message over the websocket:</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">end</span></code>.</li>
 </ul>
@@ -165,11 +165,11 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Ava will consider as error all the ws connection which are closed without <code class="code docutils literal notranslate"><span class="pre">end</span></code> message.</p>
+<p>Ava will consider as error all the ws connections which are closed without <code class="code docutils literal notranslate"><span class="pre">end</span></code> message.</p>
 </div>
 <div class="section" id="error-case">
 <h2>Error case<a class="headerlink" href="#error-case" title="Permalink to this headline">¶</a></h2>
-<p>For various reason, ava could send <code class="code docutils literal notranslate"><span class="pre">error</span></code> message.
+<p>For various reasons, ava can send an <code class="code docutils literal notranslate"><span class="pre">error</span></code> message.
 In this case, you should expect that the underlying websocket connection will be closed by us after sending this error message.</p>
 </div>
 </div>
