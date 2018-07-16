@@ -13,7 +13,7 @@ Exemple:
 .. code-block:: json
 
     {
-	"type": "end",
+	"type": "end"
     }
 
 Ava will consider as error all the ws connections which are closed without :code:`end` message.
