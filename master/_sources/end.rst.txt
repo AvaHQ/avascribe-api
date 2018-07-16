@@ -1,0 +1,27 @@
+End Connection
+==============
+
+Normal case
+-----------
+
+When the conversation is finished, the client should send a :code:`end` message over the websocket:
+
+- **type** (`string`): :code:`end`.
+
+Exemple:
+
+.. code-block:: json
+
+    {
+	"type": "end"
+    }
+
+Ava will consider as error all the ws connections which are closed without :code:`end` message.
+
+
+Error case
+----------
+
+For various reasons, ava can send an :code:`error` message.
+In this case, you should expect that the underlying websocket connection will be closed by us after sending this error message.
+

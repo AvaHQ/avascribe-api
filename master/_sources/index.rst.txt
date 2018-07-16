@@ -1,0 +1,17 @@
+Avascribe API's documentation
+=========================================
+
+Please use our `github`_ repo issues / pull requests for your questions.
+
+
+.. _github: https://github.com/avahq/avascribe-api/
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   setup
+   messages
+   end
+
