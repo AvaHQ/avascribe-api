@@ -157,11 +157,11 @@
 <h1>Ongoing Messages<a class="headerlink" href="#ongoing-messages" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="audio">
 <h2>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">¶</a></h2>
-<p>In order to stream the audio, the client send <code class="code docutils literal notranslate"><span class="pre">audio</span></code> with the audio to transcribe.</p>
+<p>In order to stream the audio, the client sends <code class="code docutils literal notranslate"><span class="pre">audio</span></code> with the audio to transcribe.</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">audio</span></code>.</li>
 <li><strong>audio</strong> (<cite>string</cite>): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).</li>
-<li><strong>timestamp</strong> (<cite>integer</cite>): timestamp of the beginning of the audio.</li>
+<li><strong>timestamp</strong> (<cite>integer</cite>): timestamp of the beginning of audio.</li>
 </ul>
 <p>Exemple:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -174,12 +174,12 @@
 </div>
 <div class="section" id="transcript">
 <h2>Transcript<a class="headerlink" href="#transcript" title="Permalink to this headline">¶</a></h2>
-<p>We return transcript to the client in <code class="code docutils literal notranslate"><span class="pre">transcript</span></code> message:</p>
+<p>We return transcripts to the client in <code class="code docutils literal notranslate"><span class="pre">transcript</span></code> messages:</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">transcript</span></code>.</li>
 <li><strong>blocId</strong> (<cite>string</cite>): id of the trancript.</li>
 <li><strong>transcript</strong> (<cite>string</cite>): transcript text.</li>
-<li><strong>isFinal</strong> (<cite>boolean</cite>): if <code class="code docutils literal notranslate"><span class="pre">true</span></code>, then no more transcript associate to this <code class="code docutils literal notranslate"><span class="pre">blocId</span></code> will be published.</li>
+<li><strong>isFinal</strong> (<cite>boolean</cite>): if <code class="code docutils literal notranslate"><span class="pre">true</span></code>, then no more transcript associated to this <code class="code docutils literal notranslate"><span class="pre">blocId</span></code> will be published.</li>
 </ul>
 <p>Exemple:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -190,12 +190,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If two transcript are sent with the same <cite>blocId</cite>, only the last one should be considered.
+<p>If two transcripts are sent with the same <cite>blocId</cite>, only the last one should be considered.
 For each <code class="code docutils literal notranslate"><span class="pre">blocId</span></code>, we will send a transcript with a <code class="code docutils literal notranslate"><span class="pre">isFinal</span></code> field set to <code class="code docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </div>
 <div class="section" id="ping-pong">
 <h2>Ping / pong<a class="headerlink" href="#ping-pong" title="Permalink to this headline">¶</a></h2>
-<p>We expect to receive at least one message every <code class="code docutils literal notranslate"><span class="pre">10s</span></code>. If at any step of the connection (captioner ready or not), you think you may have a large period without sending message, you must send <code class="code docutils literal notranslate"><span class="pre">ping</span></code> message. We will send back a <cite>pong</cite> message.</p>
+<p>We expect to receive at least one message every <code class="code docutils literal notranslate"><span class="pre">10s</span></code>. If during the connection (captioner ready or not), you think you may have a large period without sending message, you must send <code class="code docutils literal notranslate"><span class="pre">ping</span></code> message. We will send back a <cite>pong</cite> message.</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">ping</span></code> or <code class="code docutils literal notranslate"><span class="pre">pong</span></code>.</li>
 </ul>

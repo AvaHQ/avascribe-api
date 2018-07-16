@@ -4,11 +4,11 @@ Ongoing Messages
 Audio
 -----
 
-In order to stream the audio, the client send :code:`audio` with the audio to transcribe.
+In order to stream the audio, the client sends :code:`audio` with the audio to transcribe.
 
 - **type** (`string`): :code:`audio`.
 - **audio** (`string`): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).
-- **timestamp** (`integer`): timestamp of the beginning of the audio.
+- **timestamp** (`integer`): timestamp of the beginning of audio.
 
 Exemple:
 
@@ -24,12 +24,12 @@ Exemple:
 Transcript
 ----------
 
-We return transcript to the client in :code:`transcript` message:
+We return transcripts to the client in :code:`transcript` messages:
 
 - **type** (`string`): :code:`transcript`.
 - **blocId** (`string`): id of the trancript.
 - **transcript** (`string`): transcript text.
-- **isFinal** (`boolean`): if :code:`true`, then no more transcript associate to this :code:`blocId` will be published.
+- **isFinal** (`boolean`): if :code:`true`, then no more transcript associated to this :code:`blocId` will be published.
 
 Exemple:
 
@@ -42,14 +42,14 @@ Exemple:
         "isFinal": true
     }
 
-If two transcript are sent with the same `blocId`, only the last one should be considered.
+If two transcripts are sent with the same `blocId`, only the last one should be considered.
 For each :code:`blocId`, we will send a transcript with a :code:`isFinal` field set to :code:`true`.
 
 
 Ping / pong
 -----------
 
-We expect to receive at least one message every :code:`10s`. If at any step of the connection (captioner ready or not), you think you may have a large period without sending message, you must send :code:`ping` message. We will send back a `pong` message.
+We expect to receive at least one message every :code:`10s`. If during the connection (captioner ready or not), you think you may have a large period without sending message, you must send :code:`ping` message. We will send back a `pong` message.
 
 - **type** (`string`): :code:`ping` or :code:`pong`.
 
