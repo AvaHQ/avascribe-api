@@ -53,7 +53,7 @@ Conversations
 
     - **url** (`string`): `optional` - the url to connect to.
     - **error** (`object`): `optional` - An error object (see :doc:`error`).
-    - **convoId** (`string`): `optional` - Id of the conversation. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).
+    - **id** (`string`): `optional` - Id of the conversation. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).
 
    Typical success response (:code:`201`):
 

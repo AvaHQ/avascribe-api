@@ -40,9 +40,7 @@ Exemple:
 
     {
         "name": "AUTHENTICATION_FAILURE",
-        "fields": {
-            "token": "Token is missing"
-        }
+        "message": "Invalid token"
     }
 
 
