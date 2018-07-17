@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="_static/banner.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Setup Connection" href="setup.html" /> 
+    <link rel="next" title="REST API" href="rest.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -82,9 +82,9 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Connection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="messages.html">Ongoing Messages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="end.html">End Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="websocket.html">Websocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error.html">Errors</a></li>
 </ul>
 
             
@@ -150,25 +150,36 @@
   <div class="section" id="avascribe-api-s-documentation">
 <h1>Avascribe API’s documentation<a class="headerlink" href="#avascribe-api-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p>Please use our <a class="reference external" href="https://github.com/avahq/avascribe-api/">github</a> repo issues / pull requests for your questions.</p>
+<p>The general idea is the following:</p>
+<a class="reference internal image-reference" href="_images/flow.png"><img alt="_images/flow.png" class="align-center" src="_images/flow.png" style="width: 350px;" /></a>
+<ul class="simple">
+<li>The client use the REST API to create a conversation. He get in return a single-use websocket url.</li>
+<li>The client connect to this websocket url, and wait for a message from ava indicating captioner is ready.</li>
+<li>The client send audio through the websocket, and get transcripts in return.</li>
+<li>The client send an end message at the end, and ava close the websocket.</li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup Connection</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#endpoint">Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#id1">Setup connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#captioner-ready">Captioner Ready</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#errors">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#endpoint">Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#conversations">Conversations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="messages.html">Ongoing Messages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="messages.html#audio">Audio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="messages.html#transcript">Transcript</a></li>
-<li class="toctree-l2"><a class="reference internal" href="messages.html#ping-pong">Ping / pong</a></li>
+<li class="toctree-l1"><a class="reference internal" href="websocket.html">Websocket</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="websocket.html#endpoint">Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websocket.html#captioner-ready">Captioner Ready</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websocket.html#audio">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websocket.html#transcript">Transcript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websocket.html#ping-pong">Ping / pong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websocket.html#end-connection">End Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="websocket.html#errors">Errors</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="end.html">End Connection</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="end.html#normal-case">Normal case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="end.html#error-case">Error case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error.html">Errors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="error.html#validation-error">Validation Error:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error.html#authentication-failure">Authentication Failure:</a></li>
 </ul>
 </li>
 </ul>
@@ -183,7 +194,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="setup.html" class="btn btn-neutral float-right" title="Setup Connection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="rest.html" class="btn btn-neutral float-right" title="REST API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
