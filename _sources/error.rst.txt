@@ -8,8 +8,8 @@ Errors object could be sent in an HTTP response or in a websocket message. Error
 - **message** (`string`): `optional` - Human readable message, describing the error.
 
 
-Validation Error:
------------------
+Validation Error
+----------------
 
 This error is sent after receiving an incorrect message.
 
@@ -27,8 +27,8 @@ Exemple:
     }
 
 
-Authentication Failure:
------------------------
+Authentication Failure
+----------------------
 
 This error is sent when receiving no API token or an invalid API token.
 
