@@ -76,7 +76,7 @@ Please note that the blocId will be ordered: if a blocId is smaller than an othe
 Ping / pong
 -----------
 
-We expect to receive at least one message every :code:`10s`. If during the connection (captioner ready or not), you think you may have a large period without sending message, you must send ping. We will send back a pong.
+We expect to receive at least one message every :code:`10s`. If during the connection (captioner ready or not), you think you may have a large period without sending message, you must send a ping. We will send back a pong.
 
 
 End Connection
