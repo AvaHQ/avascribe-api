@@ -28,7 +28,6 @@ Conversations
 
    **Request**:
 
-      - **token** (`string`): valid API token.
       - **encoding** (`string`): Encoding of audio data which will be sent. Valid values are :code:`LINEAR16`.
       - **sampleRateHertz** (`integer`). Sample rate in Hertz of the audio data which will be sent. Valid values are :code:`8000`.
       - **chunkLengthMs** (`integer`). Duration in ms of the chunks of audio data which will be sent. Valid values are :code:`100`.
@@ -40,8 +39,7 @@ Conversations
       {
         "encoding": "LINEAR16",
         "sampleRateHertz": 8000,
-        "chunkLengthMs": 100,
-        "token": "ibabcae6a44ee3b6618774d422e3b0748049aca3f95143fa9c2760"
+        "chunkLengthMs": 100
       }
 
    **Response**:
