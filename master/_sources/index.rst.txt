@@ -9,10 +9,10 @@ The general idea is the following:
    :width: 350px
    :align: center
 
-- The client use the REST API to create a conversation. He get in return a single-use websocket url.
-- The client connect to this websocket url, and wait for a message from ava indicating captioner is ready.
-- The client send audio through the websocket, and get transcripts in return.
-- The client send an end message at the end, and ava close the websocket.
+- The client uses the REST API to create a conversation. He get in return a single-use websocket url.
+- The client connects to this websocket url, and wait for a message from ava indicating captioner is ready.
+- The client sends audio through the websocket, and get transcripts in return.
+- The client sends an end message at the end, and ava close the websocket.
 
 
 .. _github: https://github.com/avahq/avascribe-api/
