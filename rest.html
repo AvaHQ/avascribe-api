@@ -180,8 +180,9 @@ Single-use websocket url are only valid 30s.</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
-<li><strong>sampleRateHertz</strong> (<cite>integer</cite>). Sample rate in Hertz of the audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
-<li><strong>chunkLengthMs</strong> (<cite>integer</cite>). Duration in ms of the chunks of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
+<li><strong>sampleRateHertz</strong> (<cite>integer</cite>): Sample rate in Hertz of the audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
+<li><strong>chunkLengthMs</strong> (<cite>integer</cite>): Duration in ms of the chunks of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
+<li><strong>dev</strong> (<cite>boolean</cite>): <cite>optional</cite> - If <cite>true</cite>, then no real captioner will be triggered. A <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event will be sent in the websocket between <code class="code docutils literal notranslate"><span class="pre">2</span></code> and <code class="code docutils literal notranslate"><span class="pre">5</span></code> seconds after the connection initialization, and the following transcripts will be ASR only.</li>
 </ul>
 </div></blockquote>
 <p>Example:</p>
