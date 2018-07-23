@@ -29,8 +29,9 @@ Conversations
    **Request**:
 
       - **encoding** (`string`): Encoding of audio data which will be sent. Valid values are :code:`LINEAR16`.
-      - **sampleRateHertz** (`integer`). Sample rate in Hertz of the audio data which will be sent. Valid values are :code:`8000`.
-      - **chunkLengthMs** (`integer`). Duration in ms of the chunks of audio data which will be sent. Valid values are :code:`100`.
+      - **sampleRateHertz** (`integer`): Sample rate in Hertz of the audio data which will be sent. Valid values are :code:`8000`.
+      - **chunkLengthMs** (`integer`): Duration in ms of the chunks of audio data which will be sent. Valid values are :code:`100`.
+      - **dev** (`boolean`): `optional` - If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only.
 
    Example:
 

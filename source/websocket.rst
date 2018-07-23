@@ -23,6 +23,7 @@ Exemple:
 
 At this point, client can start to send audio messages.
 
+*note*: in :code:`dev` mode (if the conversation has been started with :code:`"dev": true`), the ready message will be sent without having a real captioner ready.
 
 Audio
 -----
