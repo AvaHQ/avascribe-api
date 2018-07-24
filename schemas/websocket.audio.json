@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "websocket-message:audio",
+    "title": "Audio message !",
+    "type": "object",
+    "properties": {
+        "type": {
+            "const": "audio"
+        },
+        "audio": {
+            "type": "array",
+            "description": "one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "timestamp": {
+            "type": "integer",
+            "description": "timestamp of the beginning of audio."
+
+        }
+    },
+    "required": ["type", "audio", "timestamp"],
+    "$$sample": {
+        "type": "audio",
+        "audio": [22, 0, -17, 112],
+        "timestamp": 1531587765
+    }
+}

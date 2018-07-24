@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "websocket-message:ready",
+    "title": "Ready message",
+    "description": "Message sent when captioner is ready",
+    "type": "object",
+    "properties": {
+        "type": {
+            "const": "ready"
+        }
+    },
+    "required": ["type"],
+    "$$sample": {
+        "type": "ready"
+    }
+}

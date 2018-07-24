@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "websocket-message:error",
+    "title": "Error message",
+    "description": "Error message sent by ava backend to the client",
+    "type": "object",
+    "properties": {
+        "type": {
+            "const": "error"
+        },
+        "error": {
+            "$ref": "error",
+            "description": "An error object (see :doc:`error`)."
+        }
+    },
+    "required": ["type", "error"],
+    "$$sample": {
+        "type": "error",
+        "error": {
+            "name": "VALIDATION_ERROR",
+            "fields": {
+                "audio": "Audio does not match the required length"
+            }
+        }
+    }
+
+}

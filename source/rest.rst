@@ -26,22 +26,11 @@ Conversations
    In order to open start a conversation, you need to perform a :code:`POST` call on :code:`/conversations`. You will get in return a conversation object, with a single-use websocket url for audio / transcripts transfer.
    Single-use websocket url are only valid 30s.
 
-   **Request**:
+   **Rrequest**:
 
-      - **encoding** (`string`): Encoding of audio data which will be sent. Valid values are :code:`LINEAR16`.
-      - **sampleRateHertz** (`integer`): Sample rate in Hertz of the audio data which will be sent. Valid values are :code:`8000`.
-      - **chunkLengthMs** (`integer`): Duration in ms of the chunks of audio data which will be sent. Valid values are :code:`100`.
-      - **dev** (`boolean`): `optional` - If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only.
+    .. ava-schema:: http.post.request.conversation
 
-   Example:
 
-   .. sourcecode:: json
-
-      {
-        "encoding": "LINEAR16",
-        "sampleRateHertz": 8000,
-        "chunkLengthMs": 100
-      }
 
    **Response**:
 
