@@ -1,5 +1,5 @@
 /**
- * Audio message
+ * Audio message !
  */
 export interface AudioWebsocketMessage {
     type: "audio";
