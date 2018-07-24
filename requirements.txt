@@ -1,5 +1,0 @@
-sphinx
-recommonmark
-sphinx_rtd_theme
-sphinxcontrib-httpdomain
-git+https://github.com/Lingnik/sphinxcontrib-versioning@Lingnik-patch-1
