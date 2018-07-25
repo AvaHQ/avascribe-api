@@ -166,6 +166,15 @@
 <div class="section" id="captioner-ready">
 <h2>Captioner Ready<a class="headerlink" href="#captioner-ready" title="Permalink to this headline">¶</a></h2>
 <p>When a captioner is ready to handle the conversation, Ava sends a <code class="code docutils literal notranslate"><span class="pre">ready</span></code> message to the client, which contains:</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">ready</span></code>.</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ready&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>At this point, client can start to send audio messages.</p>
 <p><em>note</em>: in <code class="code docutils literal notranslate"><span class="pre">dev</span></code> mode (if the conversation has been started with <code class="code docutils literal notranslate"><span class="pre">&quot;dev&quot;:</span> <span class="pre">true</span></code>), the ready message will be sent without having a real captioner ready.</p>
 </div>
@@ -173,10 +182,38 @@
 <h2>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">¶</a></h2>
 <p>In order to stream the audio, the client sends <code class="code docutils literal notranslate"><span class="pre">audio</span></code> with the audio to transcribe.
 No audio message should be sent before receiving the <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event.</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">audio</span></code>.</li>
+<li><strong>audio</strong> (<cite>Array&lt;integer&gt;</cite>): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).</li>
+<li><strong>timestamp</strong> (<cite>integer</cite>): timestamp of the beginning of audio.</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;audio&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;audio&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">-17</span><span class="p">,</span> <span class="mi">112</span><span class="p">],</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1531587765</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="transcript">
 <h2>Transcript<a class="headerlink" href="#transcript" title="Permalink to this headline">¶</a></h2>
 <p>We return transcripts to the client in <code class="code docutils literal notranslate"><span class="pre">transcript</span></code> messages:</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">transcript</span></code>.</li>
+<li><strong>blocId</strong> (<cite>integer</cite>): id of the trancript.</li>
+<li><strong>transcript</strong> (<cite>string</cite>): transcript text.</li>
+<li><strong>isFinal</strong> (<cite>boolean</cite>): if <code class="code docutils literal notranslate"><span class="pre">true</span></code>, then no more transcript associated to this <code class="code docutils literal notranslate"><span class="pre">blocId</span></code> will be published.</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;transcript&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;blocId&quot;</span><span class="p">:</span> <span class="mi">1531587700</span><span class="p">,</span>
+    <span class="nt">&quot;transcript&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, World.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;isFinal&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>If two transcripts are sent with the same <cite>blocId</cite>, only the last one should be considered.
 For each <code class="code docutils literal notranslate"><span class="pre">blocId</span></code>, we will send a transcript with a <code class="code docutils literal notranslate"><span class="pre">isFinal</span></code> field set to <code class="code docutils literal notranslate"><span class="pre">true</span></code>.</p>
 <p>Please note that the blocId will be ordered: if a blocId is smaller than an other one, then the associated transcripts are ordered in the same way.</p>
@@ -188,11 +225,36 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
 <div class="section" id="end-connection">
 <h2>End Connection<a class="headerlink" href="#end-connection" title="Permalink to this headline">¶</a></h2>
 <p>When the conversation is finished, the client should send a <code class="code docutils literal notranslate"><span class="pre">end</span></code> message over the websocket:</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">end</span></code>.</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;end&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Ava will consider as error all the ws connections which are closed without <code class="code docutils literal notranslate"><span class="pre">end</span></code> message.</p>
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <p>For various reasons, we may send <code class="code docutils literal notranslate"><span class="pre">error</span></code> messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Error message contains:</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">error</span></code>. (this field is ommitted in case of an http response).</li>
+<li><strong>error</strong> (<cite>object</cite>): An error object (see <a class="reference internal" href="error.html"><span class="doc">Errors</span></a>).</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VALIDATION_ERROR&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;audio&quot;</span><span class="p">:</span> <span class="s2">&quot;Audio does not match the required length&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -261,7 +323,6 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/index.js"></script>
 
   
 

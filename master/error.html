@@ -154,6 +154,11 @@
   <div class="section" id="errors">
 <h1>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h1>
 <p>Errors object could be sent in an HTTP response or in a websocket message. Error object contains:</p>
+<ul class="simple">
+<li><strong>name</strong> (<cite>string</cite>): Human readable name for the error.</li>
+<li><strong>fields</strong> (<cite>object</cite>): <cite>optional</cite> - An object with fields name as keys and associated message as values.</li>
+<li><strong>message</strong> (<cite>string</cite>): <cite>optional</cite> - Human readable message, describing the error.</li>
+</ul>
 <div class="section" id="validation-error">
 <h2>Validation Error<a class="headerlink" href="#validation-error" title="Permalink to this headline">¶</a></h2>
 <p>This error is sent after receiving an incorrect message.</p>
@@ -250,7 +255,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/index.js"></script>
 
   
 
