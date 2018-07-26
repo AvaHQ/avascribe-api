@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "websocket-message:transcript",
+    "title": "Transcript message",
+    "type": "object",
+    "properties": {
+        "type": {
+            "const": "transcript"
+        },
+        "blocId": {
+            "type": "integer",
+            "description": "id of the trancript."
+        },
+        "transcript": {
+            "type": "string",
+            "description": "transcript text"
+        },
+        "isFinal": {
+            "type": "boolean",
+            "description": "if :code:`true`, then no more transcript associated to this :code:`blocId` will be published."
+
+        }
+    },
+    "required": ["type", "transcript", "blocId", "isFinal"],
+    "$$sample": {
+        "type": "transcript",
+        "blocId": 1531587700,
+        "transcript": "Hello, World.",
+        "isFinal": true
+    }
+}
