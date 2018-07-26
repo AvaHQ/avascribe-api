@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>REST API &mdash; Avascribe API 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Websocket" href="websocket.html" />
+    <link rel="prev" title="Avascribe API’s documentation" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Avascribe API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conversations">Conversations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="websocket.html">Websocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error.html">Errors</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Avascribe API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>REST API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rest-api">
+<h1>REST API<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>you must use JSON-encoded bodies for POST request, and therefore set the appropriate header <code class="code docutils literal notranslate"><span class="pre">Content-type:</span> <span class="pre">application/json</span></code>). JSON body should be a hash of attribute key/value pairs (no array, string, number or boolean).</li>
+<li>You must transmit a valid API token as a bearer token in the <code class="code docutils literal notranslate"><span class="pre">Authorization</span></code> HTTP header.</li>
+</ul>
+<p>Exemple:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/conversations</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer xxxxxxxxxxxxxxxxx</span>
+
+<span class="p">{</span><span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conversations">
+<h2>Conversations<a class="headerlink" href="#conversations" title="Permalink to this headline">¶</a></h2>
+<dl class="post">
+<dt id="post--conversations">
+<code class="descname">POST </code><code class="descname">/conversations</code><a class="headerlink" href="#post--conversations" title="Permalink to this definition">¶</a></dt>
+<dd><p>In order to open start a conversation, you need to perform a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> call on <code class="code docutils literal notranslate"><span class="pre">/conversations</span></code>. You will get in return a conversation object, with a single-use websocket url for audio / transcripts transfer.
+Single-use websocket url are only valid 30s.</p>
+<p><strong>Rrequest</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
+<li><strong>sampleRateHertz</strong> (<cite>integer</cite>):  Sample rate in Hertz of the audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
+<li><strong>chunkLengthMs</strong> (<cite>integer</cite>): Duration in ms of the chunks of audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
+<li><strong>dev</strong> (<cite>boolean</cite>): <cite>optional</cite> - If <cite>true</cite>, then no real captioner will be triggered. A <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event will be sent in the websocket between <code class="code docutils literal notranslate"><span class="pre">2</span></code> and <code class="code docutils literal notranslate"><span class="pre">5</span></code> seconds after the connection initialization, and the following transcripts will be ASR only.</li>
+</ul>
+<p>Exampple:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;LINEAR16&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sampleRateHertz&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+  <span class="nt">&quot;chunkLengthMs&quot;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Json Schema:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;postConversationsRequest&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP POST /conversations Request&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="s2">&quot;LINEAR16&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Encoding of audio data which will be sent.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;sampleRateHertz&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot; Sample rate in Hertz of the audio data which will be sent.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;chunkLengthMs&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Duration in ms of the chunks of audio data which will be sent.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;dev&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only.&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sampleRateHertz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;chunkLengthMs&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Response</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>url</strong> (<cite>string</cite>): <cite>optional</cite> - the url to connect to.</li>
+<li><strong>error</strong> (<cite>object</cite>): <cite>optional</cite> - An error object (see <a class="reference internal" href="error.html"><span class="doc">Errors</span></a>).</li>
+<li><strong>id</strong> (<cite>string</cite>): <cite>optional</cite> - Id of the conversation. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).</li>
+</ul>
+</div></blockquote>
+<p>Typical success response (<code class="code docutils literal notranslate"><span class="pre">201</span></code>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;wss://scribe.ava.me/ws/5b49d758ec2040000121aaf?5ee3b6618774d422e3b&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5b49d758ec2040000121aaf5&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Typical error response (<code class="code docutils literal notranslate"><span class="pre">400</span></code>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VALIDATION_ERROR&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid value&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="websocket.html" class="btn btn-neutral float-right" title="Websocket" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Avascribe API’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Ava.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: dts-json-schema
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="rest.html">dts-json-schema</a></dd>
+            <dd><a href="../json-schema/rest.html">json-schema</a></dd>
+            <dd><a href="../master/rest.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/index.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
