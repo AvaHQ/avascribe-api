@@ -8,11 +8,8 @@
             "const": "audio"
         },
         "audio": {
-            "type": "array",
-            "description": "one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).",
-            "items": {
-                "type": "integer"
-            }
+            "type": "string",
+            "description": "one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup). Must be base64 encoded 16LE integer bits."
         },
         "timestamp": {
             "type": "integer",
@@ -23,7 +20,7 @@
     "required": ["type", "audio", "timestamp"],
     "$$sample": {
         "type": "audio",
-        "audio": [22, 0, -17, 112],
+        "audio": "AAIwDO",
         "timestamp": 1531587765
     }
 }
