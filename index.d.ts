@@ -43,9 +43,9 @@ export interface PostConversationsRequest {
 export interface WebsocketMessageAudio {
     type: "audio";
     /**
-     * one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).
+     * one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup). Must be base64 encoded 16LE integer bits.
      */
-    audio: number[];
+    audio: string;
     /**
      * timestamp of the beginning of audio.
      */
