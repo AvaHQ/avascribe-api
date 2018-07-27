@@ -3,10 +3,7 @@ Errors
 
 Errors object could be sent in an HTTP response or in a websocket message. Error object contains:
 
-- **name** (`string`): Human readable name for the error.
-- **fields** (`object`): `optional` - An object with fields name as keys and associated message as values.
-- **message** (`string`): `optional` - Human readable message, describing the error.
-
+.. ava-schema:: error
 
 Validation Error
 ----------------

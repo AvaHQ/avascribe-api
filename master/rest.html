@@ -176,16 +176,15 @@
 <code class="descname">POST </code><code class="descname">/conversations</code><a class="headerlink" href="#post--conversations" title="Permalink to this definition">¶</a></dt>
 <dd><p>In order to open start a conversation, you need to perform a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> call on <code class="code docutils literal notranslate"><span class="pre">/conversations</span></code>. You will get in return a conversation object, with a single-use websocket url for audio / transcripts transfer.
 Single-use websocket url are only valid 30s.</p>
-<p><strong>Request</strong>:</p>
+<p><strong>Rrequest</strong>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
-<li><strong>sampleRateHertz</strong> (<cite>integer</cite>): Sample rate in Hertz of the audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
-<li><strong>chunkLengthMs</strong> (<cite>integer</cite>): Duration in ms of the chunks of audio data which will be sent. Valid values are <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
+<li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
+<li><strong>sampleRateHertz</strong> (<cite>integer</cite>):  Sample rate in Hertz of the audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
+<li><strong>chunkLengthMs</strong> (<cite>integer</cite>): Duration in ms of the chunks of audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
 <li><strong>dev</strong> (<cite>boolean</cite>): <cite>optional</cite> - If <cite>true</cite>, then no real captioner will be triggered. A <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event will be sent in the websocket between <code class="code docutils literal notranslate"><span class="pre">2</span></code> and <code class="code docutils literal notranslate"><span class="pre">5</span></code> seconds after the connection initialization, and the following transcripts will be ASR only.</li>
 </ul>
-</div></blockquote>
-<p>Example:</p>
+<p>Exampple:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;LINEAR16&quot;</span><span class="p">,</span>
   <span class="nt">&quot;sampleRateHertz&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
@@ -193,6 +192,42 @@ Single-use websocket url are only valid 30s.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Json Schema:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;postConversationsRequest&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP POST /conversations Request&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="s2">&quot;LINEAR16&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Encoding of audio data which will be sent.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;sampleRateHertz&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot; Sample rate in Hertz of the audio data which will be sent.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;chunkLengthMs&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Duration in ms of the chunks of audio data which will be sent.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;dev&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only.&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sampleRateHertz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;chunkLengthMs&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p><strong>Response</strong>:</p>
 <blockquote>
 <div><ul class="simple">
@@ -290,6 +325,7 @@ Single-use websocket url are only valid 30s.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/index.js"></script>
 
   
 
