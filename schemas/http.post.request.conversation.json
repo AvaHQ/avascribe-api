@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "postConversationsRequest",
+    "title": "HTTP POST /conversations Request",
+    "type": "object",
+    "properties": {
+        "encoding": {
+            "type": "string",
+            "const": "LINEAR16",
+            "description": "Encoding of audio data which will be sent."
+        },
+        "sampleRateHertz": {
+            "type": "integer",
+            "const": 8000,
+            "description": " Sample rate in Hertz of the audio data which will be sent."
+        },
+        "chunkLengthMs": {
+            "type": "integer",
+            "const":  100,
+            "description": "Duration in ms of the chunks of audio data which will be sent."
+        },
+        "dev": {
+            "type": "boolean",
+            "description": "If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only."
+        }
+    },
+    "required": ["encoding", "sampleRateHertz", "chunkLengthMs"],
+    "$$sample": {
+        "encoding": "LINEAR16",
+        "sampleRateHertz": 8000,
+        "chunkLengthMs": 100
+    }
+}
