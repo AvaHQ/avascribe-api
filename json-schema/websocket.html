@@ -202,7 +202,7 @@
 No audio message should be sent before receiving the <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event.</p>
 <ul class="simple">
 <li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">audio</span></code>.</li>
-<li><strong>audio</strong> (<cite>Array&lt;integer&gt;</cite>): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).</li>
+<li><strong>audio</strong> (<cite>string</cite>): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup). Must be base64 encoded 16LE integer bits.</li>
 <li><strong>timestamp</strong> (<cite>integer</cite>): timestamp of the beginning of audio.</li>
 </ul>
 <p>Exampple:</p>
@@ -229,11 +229,8 @@ No audio message should be sent before receiving the <code class="code docutils 
       <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="s2">&quot;audio&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;audio&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup).&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
-      <span class="p">}</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup). Must be base64 encoded 16LE integer bits.&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
