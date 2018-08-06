@@ -22,6 +22,11 @@
         "dev": {
             "type": "boolean",
             "description": "If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only."
+        },
+        "language": {
+            "type": "string",
+           "description": "Language of the conversation (french by default).",
+            "enum": ["fr-FR", "en-US"]
         }
     },
     "required": ["encoding", "sampleRateHertz", "chunkLengthMs"],
