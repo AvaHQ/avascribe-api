@@ -36,6 +36,10 @@ export interface PostConversationsRequest {
      * If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only.
      */
     dev?: boolean;
+    /**
+     * Language of the conversation (french by default).
+     */
+    language?: "fr-FR" | "en-US";
 }
 /**
  * Audio message !
