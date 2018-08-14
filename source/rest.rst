@@ -18,6 +18,10 @@ Exemple:
     {"key": "value"}
 
 
+Endpoint
+---------
+- production: https://scribe.ava.me/api/v1
+
 Conversations
 -------------
 
