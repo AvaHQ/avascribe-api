@@ -27,11 +27,11 @@ export interface PostConversationsRequest {
     /**
      *  Sample rate in Hertz of the audio data which will be sent.
      */
-    sampleRateHertz: 8000;
+    sampleRateHertz: 8000 | 16000;
     /**
      * Duration in ms of the chunks of audio data which will be sent.
      */
-    chunkLengthMs: 100;
+    chunkLengthMs: 100 | 60;
     /**
      * If `true`, then no real captioner will be triggered. A :code:`ready` event will be sent in the websocket between :code:`2` and :code:`5` seconds after the connection initialization, and the following transcripts will be ASR only.
      */
