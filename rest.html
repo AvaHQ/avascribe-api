@@ -85,6 +85,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">REST API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#endpoint">Endpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conversations">Conversations</a></li>
 </ul>
 </li>
@@ -169,6 +170,12 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="endpoint">
+<h2>Endpoint<a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>production: <a class="reference external" href="https://scribe.ava.me/api/v1">https://scribe.ava.me/api/v1</a></li>
+</ul>
+</div>
 <div class="section" id="conversations">
 <h2>Conversations<a class="headerlink" href="#conversations" title="Permalink to this headline">¶</a></h2>
 <dl class="post">
@@ -180,8 +187,8 @@ Single-use websocket url are only valid 30s.</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
-<li><strong>sampleRateHertz</strong> (<cite>integer</cite>):  Sample rate in Hertz of the audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">8000</span></code>.</li>
-<li><strong>chunkLengthMs</strong> (<cite>integer</cite>): Duration in ms of the chunks of audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">100</span></code>.</li>
+<li><strong>sampleRateHertz</strong> (<cite>integer</cite>):  Sample rate in Hertz of the audio data which will be sent. Valid values are: <code class="code docutils literal notranslate"><span class="pre">8000</span></code>, <code class="code docutils literal notranslate"><span class="pre">16000</span></code>.</li>
+<li><strong>chunkLengthMs</strong> (<cite>integer</cite>): Duration in ms of the chunks of audio data which will be sent. Valid values are: <code class="code docutils literal notranslate"><span class="pre">100</span></code>, <code class="code docutils literal notranslate"><span class="pre">60</span></code>.</li>
 <li><strong>dev</strong> (<cite>boolean</cite>): <cite>optional</cite> - If <cite>true</cite>, then no real captioner will be triggered. A <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event will be sent in the websocket between <code class="code docutils literal notranslate"><span class="pre">2</span></code> and <code class="code docutils literal notranslate"><span class="pre">5</span></code> seconds after the connection initialization, and the following transcripts will be ASR only.</li>
 <li><strong>language</strong> (<cite>string</cite>): <cite>optional</cite> - Language of the conversation (french by default). Valid values are: <code class="code docutils literal notranslate"><span class="pre">fr-FR</span></code>, <code class="code docutils literal notranslate"><span class="pre">en-US</span></code>.</li>
 </ul>
@@ -207,12 +214,18 @@ Single-use websocket url are only valid 30s.</p>
     <span class="p">},</span>
     <span class="nt">&quot;sampleRateHertz&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
+      <span class="nt">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">8000</span><span class="p">,</span>
+        <span class="mi">16000</span>
+      <span class="p">],</span>
       <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot; Sample rate in Hertz of the audio data which will be sent.&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;chunkLengthMs&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+      <span class="nt">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">100</span><span class="p">,</span>
+        <span class="mi">60</span>
+      <span class="p">],</span>
       <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Duration in ms of the chunks of audio data which will be sent.&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;dev&quot;</span><span class="p">:</span> <span class="p">{</span>
