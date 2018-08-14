@@ -11,12 +11,12 @@
         },
         "sampleRateHertz": {
             "type": "integer",
-            "const": 8000,
+            "enum": [8000, 16000],
             "description": " Sample rate in Hertz of the audio data which will be sent."
         },
         "chunkLengthMs": {
             "type": "integer",
-            "const":  100,
+            "enum": [100, 60],
             "description": "Duration in ms of the chunks of audio data which will be sent."
         },
         "dev": {
