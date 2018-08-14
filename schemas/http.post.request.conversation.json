@@ -16,7 +16,6 @@
         },
         "chunkLengthMs": {
             "type": "integer",
-            "enum": [100, 60],
             "description": "Duration in ms of the chunks of audio data which will be sent."
         },
         "dev": {
