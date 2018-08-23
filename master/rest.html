@@ -160,12 +160,10 @@
 <h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>you must use JSON-encoded bodies for POST request, and therefore set the appropriate header <code class="code docutils literal notranslate"><span class="pre">Content-type:</span> <span class="pre">application/json</span></code>). JSON body should be a hash of attribute key/value pairs (no array, string, number or boolean).</li>
-<li>You must transmit a valid API token as a bearer token in the <code class="code docutils literal notranslate"><span class="pre">Authorization</span></code> HTTP header.</li>
 </ul>
 <p>Exemple:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/conversations</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer xxxxxxxxxxxxxxxxx</span>
 
 <span class="p">{</span><span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
 </pre></div>
