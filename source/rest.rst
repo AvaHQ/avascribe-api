@@ -5,7 +5,6 @@ Basics
 ------
 
 - you must use JSON-encoded bodies for POST request, and therefore set the appropriate header :code:`Content-type: application/json`). JSON body should be a hash of attribute key/value pairs (no array, string, number or boolean).
-- You must transmit a valid API token as a bearer token in the :code:`Authorization` HTTP header.
 
 Exemple:
 
@@ -13,7 +12,6 @@ Exemple:
 
     POST /conversations HTTP/1.1
     Content-type: application/json
-    Authorization: Bearer xxxxxxxxxxxxxxxxx
 
     {"key": "value"}
 
@@ -21,6 +19,11 @@ Exemple:
 Endpoint
 ---------
 - production: https://scribe.ava.me/api/v1
+
+Security
+---------
+
+- you must use HTTP Basic authentication. We will ignore the username and consider the password as a token.
 
 Conversations
 -------------
