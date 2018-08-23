@@ -22,6 +22,11 @@ Endpoint
 ---------
 - production: https://scribe.ava.me/api/v1
 
+Security
+---------
+
+- you must use HTTP Basic authentication. We will ignore the username and consider the password as a token.
+
 Conversations
 -------------
 
