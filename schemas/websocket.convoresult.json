@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "websocket-message:convo-result",
+    "title": "Convo Result Message",
+    "type": "object",
+    "properties": {
+        "type": {
+            "const": "convo-result"
+        },
+        "wer": {
+            "type": "number",
+            "description": "Word Error Rate of the conversation"
+        }
+    },
+    "required": ["type", "wer"],
+    "$$sample": {
+        "type": "convo-result",
+        "wer": 12.3
+    }
+}

@@ -26,6 +26,10 @@
             "type": "string",
            "description": "Language of the conversation (french by default).",
             "enum": ["fr-FR", "en-US"]
+        },
+        "groundTruth": {
+            "type": "string",
+            "description": "The ground truth of the text associated to the audio. If provided, the server will return a WER score"
         }
     },
     "required": ["encoding", "sampleRateHertz", "chunkLengthMs"],
