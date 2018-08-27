@@ -40,6 +40,10 @@ export interface PostConversationsRequest {
      * Language of the conversation (french by default).
      */
     language?: "fr-FR" | "en-US";
+    /**
+     * The ground truth of the text associated to the audio. If provided, the server will return a WER score
+     */
+    groundTruth?: string;
 }
 /**
  * Audio message !
@@ -54,6 +58,16 @@ export interface WebsocketMessageAudio {
      * timestamp of the beginning of audio.
      */
     timestamp: number;
+}
+/**
+ * Convo Result Message
+ */
+export interface WebsocketMessageConvoResult {
+    type: "convo-result";
+    /**
+     * Word Error Rate of the conversation
+     */
+    wer: number;
 }
 /**
  * End message
@@ -103,5 +117,5 @@ export interface WebsocketMessageTranscript {
     };
 }
 
-export type WebsocketMessage = WebsocketMessageAudio | WebsocketMessageEnd | WebsocketMessageError | WebsocketMessageReady | WebsocketMessageTranscript;
+export type WebsocketMessage = WebsocketMessageAudio | WebsocketMessageConvoResult | WebsocketMessageEnd | WebsocketMessageError | WebsocketMessageReady | WebsocketMessageTranscript;
 
