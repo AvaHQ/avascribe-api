@@ -37,12 +37,29 @@ For each :code:`blocId`, we will send a transcript with a :code:`isFinal` field 
 
 Please note that the blocId will be ordered: if a blocId is smaller than an other one, then the associated transcripts are ordered in the same way.
 
+Human map
+.........
+An map of all the words part edited by human may be joined.
+
+Example:
+
+- ASR: :code:`The house is beautiful`
+- human: :code:`The house is beautiful` -> :code:`The mouse is so beautiful`
+
+
+
+.. code-block:: json
+
+   {
+      "4": 5,
+      "13": 2
+   }
+
 
 Ping / pong
 -----------
 
 We expect to receive at least one message every :code:`10s`. If during the connection (captioner ready or not), you think you may have a large period without sending message, you must send a ping. We will send back a pong.
-
 
 End Connection
 --------------

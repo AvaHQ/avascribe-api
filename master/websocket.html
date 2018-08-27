@@ -88,7 +88,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#endpoint">Endpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#captioner-ready">Captioner Ready</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#audio">Audio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#transcript">Transcript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transcript">Transcript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#human-map">Human map</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#ping-pong">Ping / pong</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#end-connection">End Connection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#errors">Errors</a></li>
@@ -249,6 +252,7 @@ No audio message should be sent before receiving the <code class="code docutils 
 <li><strong>blocId</strong> (<cite>integer</cite>): id of the trancript.</li>
 <li><strong>transcript</strong> (<cite>string</cite>): transcript text</li>
 <li><strong>isFinal</strong> (<cite>boolean</cite>): if <code class="code docutils literal notranslate"><span class="pre">true</span></code>, then no more transcript associated to this <code class="code docutils literal notranslate"><span class="pre">blocId</span></code> will be published.</li>
+<li><strong>human</strong> (<cite>object</cite>): <cite>optional</cite> - A map of all the part of the transcript edited by human. Format is <code class="code docutils literal notranslate"><span class="pre">{&quot;index&quot;:</span> <span class="pre">length}</span></code>.</li>
 </ul>
 <p>Example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -280,6 +284,10 @@ No audio message should be sent before receiving the <code class="code docutils 
     <span class="nt">&quot;isFinal&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
       <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;if :code:`true`, then no more transcript associated to this :code:`blocId` will be published.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;human&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A map of all the part of the transcript edited by human. Format is :code:`{\&quot;index\&quot;: length}`.&quot;</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -294,6 +302,21 @@ No audio message should be sent before receiving the <code class="code docutils 
 <p>If two transcripts are sent with the same <cite>blocId</cite>, only the last one should be considered.
 For each <code class="code docutils literal notranslate"><span class="pre">blocId</span></code>, we will send a transcript with a <code class="code docutils literal notranslate"><span class="pre">isFinal</span></code> field set to <code class="code docutils literal notranslate"><span class="pre">true</span></code>.</p>
 <p>Please note that the blocId will be ordered: if a blocId is smaller than an other one, then the associated transcripts are ordered in the same way.</p>
+<div class="section" id="human-map">
+<h3>Human map<a class="headerlink" href="#human-map" title="Permalink to this headline">¶</a></h3>
+<p>An map of all the words part edited by human may be joined.</p>
+<p>Example:</p>
+<ul class="simple">
+<li>ASR: <code class="code docutils literal notranslate"><span class="pre">The</span> <span class="pre">house</span> <span class="pre">is</span> <span class="pre">beautiful</span></code></li>
+<li>human: <code class="code docutils literal notranslate"><span class="pre">The</span> <span class="pre">house</span> <span class="pre">is</span> <span class="pre">beautiful</span></code> -&gt; <code class="code docutils literal notranslate"><span class="pre">The</span> <span class="pre">mouse</span> <span class="pre">is</span> <span class="pre">so</span> <span class="pre">beautiful</span></code></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;4&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+   <span class="nt">&quot;13&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="ping-pong">
 <h2>Ping / pong<a class="headerlink" href="#ping-pong" title="Permalink to this headline">¶</a></h2>
