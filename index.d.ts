@@ -96,6 +96,11 @@ export interface WebsocketMessageTranscript {
      * if :code:`true`, then no more transcript associated to this :code:`blocId` will be published.
      */
     isFinal: boolean;
+    /**
+     * A map of all the part of the transcript edited by human. Format is :code:`{"index": length}`.
+     */
+    human?: {
+    };
 }
 
 export type WebsocketMessage = WebsocketMessageAudio | WebsocketMessageEnd | WebsocketMessageError | WebsocketMessageReady | WebsocketMessageTranscript;
