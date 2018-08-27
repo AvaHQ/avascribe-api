@@ -18,7 +18,10 @@
         "isFinal": {
             "type": "boolean",
             "description": "if :code:`true`, then no more transcript associated to this :code:`blocId` will be published."
-
+        },
+        "human": {
+            "type": "object",
+            "description": "A map of all the part of the transcript edited by human. Format is :code:`{\"index\": length}`."
         }
     },
     "required": ["type", "transcript", "blocId", "isFinal"],
