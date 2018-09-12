@@ -30,6 +30,10 @@
         "groundTruth": {
             "type": "string",
             "description": "The ground truth of the text associated to the audio. If provided, the server will return a WER score"
+        },
+        "title": {
+            "type": "string",
+            "description": "Title of the conversation. Use for debug / log only"
         }
     },
     "required": ["encoding", "sampleRateHertz", "chunkLengthMs"],
