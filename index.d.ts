@@ -44,6 +44,10 @@ export interface PostConversationsRequest {
      * The ground truth of the text associated to the audio. If provided, the server will return a WER score
      */
     groundTruth?: string;
+    /**
+     * Title of the conversation. Use for debug / log only
+     */
+    title?: string;
 }
 /**
  * Audio message !
