@@ -48,6 +48,10 @@ export interface PostConversationsRequest {
      * Title of the conversation. Use for debug / log only
      */
     title?: string;
+    /**
+     * Id of the captioner needed for this convo.
+     */
+    captionerId?: string;
 }
 /**
  * Audio message !
