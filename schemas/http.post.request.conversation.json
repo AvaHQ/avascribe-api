@@ -34,6 +34,10 @@
         "title": {
             "type": "string",
             "description": "Title of the conversation. Use for debug / log only"
+        },
+        "captionerId": {
+            "type": "string",
+            "description": "Id of the captioner needed for this convo."
         }
     },
     "required": ["encoding", "sampleRateHertz", "chunkLengthMs"],
