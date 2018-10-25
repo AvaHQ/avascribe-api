@@ -160,7 +160,7 @@
 <li><strong>fields</strong> (<cite>object</cite>): <cite>optional</cite> - Human readable message, describing the error.</li>
 </ul>
 <p>Json Schema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
   <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span>
@@ -189,10 +189,10 @@
 <h2>Validation Error<a class="headerlink" href="#validation-error" title="Permalink to this headline">¶</a></h2>
 <p>This error is sent after receiving an incorrect message.</p>
 <ul class="simple">
-<li><strong>name</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">VALIDATION_ERROR</span></code>.</li>
+<li><strong>name</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">VALIDATION_ERROR</span></code>.</li>
 </ul>
 <p>Exemple:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VALIDATION_ERROR&quot;</span><span class="p">,</span>
     <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;audio&quot;</span><span class="p">:</span> <span class="s2">&quot;Audio does not match the required length&quot;</span>
@@ -205,10 +205,10 @@
 <h2>Authentication Failure<a class="headerlink" href="#authentication-failure" title="Permalink to this headline">¶</a></h2>
 <p>This error is sent when receiving no API token or an invalid API token.</p>
 <ul class="simple">
-<li><strong>name</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">AUTHENTICATION_FAILURE</span></code>.</li>
+<li><strong>name</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">AUTHENTICATION_FAILURE</span></code>.</li>
 </ul>
 <p>Exemple:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AUTHENTICATION_FAILURE&quot;</span><span class="p">,</span>
     <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid token&quot;</span>
 <span class="p">}</span>
@@ -236,7 +236,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Ava.
+        &copy; Copyright 2018, Ava
 
     </p>
   </div> 
@@ -259,7 +259,6 @@
     <div class="rst-other-versions">
         <dl>
             <dt>Branches</dt>
-            <dd><a href="json-schema/error.html">json-schema</a></dd>
             <dd><a href="master/error.html">master</a></dd>
         </dl>
     </div>
@@ -268,21 +267,24 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/index.js"></script>
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/index.js"></script>
+    
 
   
 

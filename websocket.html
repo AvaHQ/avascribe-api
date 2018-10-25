@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#endpoint">Endpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#captioner-ready">Captioner Ready</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#audio">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#play-announcement-message">Play announcement message</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#transcript">Transcript</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#human-map">Human map</a></li>
 </ul>
@@ -168,18 +169,18 @@
 </div>
 <div class="section" id="captioner-ready">
 <h2>Captioner Ready<a class="headerlink" href="#captioner-ready" title="Permalink to this headline">¶</a></h2>
-<p>When a captioner is ready to handle the conversation, Ava sends a <code class="code docutils literal notranslate"><span class="pre">ready</span></code> message to the client, which contains:</p>
+<p>When a captioner is ready to handle the conversation, Ava sends a <code class="code docutils literal"><span class="pre">ready</span></code> message to the client, which contains:</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">ready</span></code>.</li>
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">ready</span></code>.</li>
 </ul>
 <p>Example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ready&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Json Schema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
   <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:ready&quot;</span><span class="p">,</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Ready message&quot;</span><span class="p">,</span>
@@ -197,19 +198,19 @@
 </pre></div>
 </div>
 <p>At this point, client can start to send audio messages.</p>
-<p><em>note</em>: in <code class="code docutils literal notranslate"><span class="pre">dev</span></code> mode (if the conversation has been started with <code class="code docutils literal notranslate"><span class="pre">&quot;dev&quot;:</span> <span class="pre">true</span></code>), the ready message will be sent without having a real captioner ready.</p>
+<p><em>note</em>: in <code class="code docutils literal"><span class="pre">dev</span></code> mode (if the conversation has been started with <code class="code docutils literal"><span class="pre">&quot;dev&quot;:</span> <span class="pre">true</span></code>), the ready message will be sent without having a real captioner ready.</p>
 </div>
 <div class="section" id="audio">
 <h2>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">¶</a></h2>
-<p>In order to stream the audio, the client sends <code class="code docutils literal notranslate"><span class="pre">audio</span></code> with the audio to transcribe.
-No audio message should be sent before receiving the <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event.</p>
+<p>In order to stream the audio, the client sends <code class="code docutils literal"><span class="pre">audio</span></code> with the audio to transcribe.
+No audio message should be sent before receiving the <code class="code docutils literal"><span class="pre">ready</span></code> event.</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">audio</span></code>.</li>
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">audio</span></code>.</li>
 <li><strong>audio</strong> (<cite>string</cite>): one audio chunk (must match the encoding, the length and the sampleRateHertz indicated in connection setup). Must be base64 encoded 16LE integer bits.</li>
 <li><strong>timestamp</strong> (<cite>integer</cite>): timestamp of the beginning of audio.</li>
 </ul>
 <p>Example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;audio&quot;</span><span class="p">,</span>
   <span class="nt">&quot;audio&quot;</span><span class="p">:</span> <span class="s2">&quot;AAIwDO&quot;</span><span class="p">,</span>
   <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1531587765</span>
@@ -217,7 +218,7 @@ No audio message should be sent before receiving the <code class="code docutils 
 </pre></div>
 </div>
 <p>Json Schema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
   <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:audio&quot;</span><span class="p">,</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Audio message !&quot;</span><span class="p">,</span>
@@ -244,18 +245,48 @@ No audio message should be sent before receiving the <code class="code docutils 
 </pre></div>
 </div>
 </div>
-<div class="section" id="transcript">
-<h2>Transcript<a class="headerlink" href="#transcript" title="Permalink to this headline">¶</a></h2>
-<p>We return transcripts to the client in <code class="code docutils literal notranslate"><span class="pre">transcript</span></code> messages:</p>
+<div class="section" id="play-announcement-message">
+<h2>Play announcement message<a class="headerlink" href="#play-announcement-message" title="Permalink to this headline">¶</a></h2>
+<p>The backend can send <code class="code docutils literal"><span class="pre">play-announcement-message</span></code> to trigger an announcement message to the callee.</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">transcript</span></code>.</li>
-<li><strong>blocId</strong> (<cite>integer</cite>): id of the trancript.</li>
-<li><strong>transcript</strong> (<cite>string</cite>): transcript text</li>
-<li><strong>isFinal</strong> (<cite>boolean</cite>): if <code class="code docutils literal notranslate"><span class="pre">true</span></code>, then no more transcript associated to this <code class="code docutils literal notranslate"><span class="pre">blocId</span></code> will be published.</li>
-<li><strong>human</strong> (<cite>object</cite>): <cite>optional</cite> - A map of all the part of the transcript edited by human. Format is <code class="code docutils literal notranslate"><span class="pre">{&quot;index&quot;:</span> <span class="pre">length}</span></code>.</li>
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">play-announcement-message</span></code>.</li>
 </ul>
 <p>Example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;play-announcement-message&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Json Schema:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:play-announcement-message&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Play announcement message&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="s2">&quot;play-announcement-message&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;type&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transcript">
+<h2>Transcript<a class="headerlink" href="#transcript" title="Permalink to this headline">¶</a></h2>
+<p>We return transcripts to the client in <code class="code docutils literal"><span class="pre">transcript</span></code> messages:</p>
+<ul class="simple">
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">transcript</span></code>.</li>
+<li><strong>blocId</strong> (<cite>integer</cite>): id of the trancript.</li>
+<li><strong>transcript</strong> (<cite>string</cite>): transcript text</li>
+<li><strong>isFinal</strong> (<cite>boolean</cite>): if <code class="code docutils literal"><span class="pre">true</span></code>, then no more transcript associated to this <code class="code docutils literal"><span class="pre">blocId</span></code> will be published.</li>
+<li><strong>human</strong> (<cite>object</cite>): <cite>optional</cite> - A map of all the part of the transcript edited by human. Format is <code class="code docutils literal"><span class="pre">{&quot;index&quot;:</span> <span class="pre">length}</span></code>.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;transcript&quot;</span><span class="p">,</span>
   <span class="nt">&quot;blocId&quot;</span><span class="p">:</span> <span class="mi">1531587700</span><span class="p">,</span>
   <span class="nt">&quot;transcript&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, World.&quot;</span><span class="p">,</span>
@@ -264,7 +295,7 @@ No audio message should be sent before receiving the <code class="code docutils 
 </pre></div>
 </div>
 <p>Json Schema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
   <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:transcript&quot;</span><span class="p">,</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Transcript message&quot;</span><span class="p">,</span>
@@ -300,17 +331,17 @@ No audio message should be sent before receiving the <code class="code docutils 
 </pre></div>
 </div>
 <p>If two transcripts are sent with the same <cite>blocId</cite>, only the last one should be considered.
-For each <code class="code docutils literal notranslate"><span class="pre">blocId</span></code>, we will send a transcript with a <code class="code docutils literal notranslate"><span class="pre">isFinal</span></code> field set to <code class="code docutils literal notranslate"><span class="pre">true</span></code>.</p>
+For each <code class="code docutils literal"><span class="pre">blocId</span></code>, we will send a transcript with a <code class="code docutils literal"><span class="pre">isFinal</span></code> field set to <code class="code docutils literal"><span class="pre">true</span></code>.</p>
 <p>Please note that the blocId will be ordered: if a blocId is smaller than an other one, then the associated transcripts are ordered in the same way.</p>
 <div class="section" id="human-map">
 <h3>Human map<a class="headerlink" href="#human-map" title="Permalink to this headline">¶</a></h3>
 <p>An map of all the words part edited by human may be joined.</p>
 <p>Example:</p>
 <ul class="simple">
-<li>ASR: <code class="code docutils literal notranslate"><span class="pre">The</span> <span class="pre">house</span> <span class="pre">is</span> <span class="pre">beautiful</span></code></li>
-<li>human: <code class="code docutils literal notranslate"><span class="pre">The</span> <span class="pre">house</span> <span class="pre">is</span> <span class="pre">beautiful</span></code> -&gt; <code class="code docutils literal notranslate"><span class="pre">The</span> <span class="pre">mouse</span> <span class="pre">is</span> <span class="pre">so</span> <span class="pre">beautiful</span></code></li>
+<li>ASR: <code class="code docutils literal"><span class="pre">The</span> <span class="pre">house</span> <span class="pre">is</span> <span class="pre">beautiful</span></code></li>
+<li>human: <code class="code docutils literal"><span class="pre">The</span> <span class="pre">house</span> <span class="pre">is</span> <span class="pre">beautiful</span></code> -&gt; <code class="code docutils literal"><span class="pre">The</span> <span class="pre">mouse</span> <span class="pre">is</span> <span class="pre">so</span> <span class="pre">beautiful</span></code></li>
 </ul>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="nt">&quot;4&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
    <span class="nt">&quot;13&quot;</span><span class="p">:</span> <span class="mi">2</span>
 <span class="p">}</span>
@@ -320,22 +351,22 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
 </div>
 <div class="section" id="ping-pong">
 <h2>Ping / pong<a class="headerlink" href="#ping-pong" title="Permalink to this headline">¶</a></h2>
-<p>We expect to receive at least one message every <code class="code docutils literal notranslate"><span class="pre">10s</span></code>. If during the connection (captioner ready or not), you think you may have a large period without sending message, you must send a ping. We will send back a pong.</p>
+<p>We expect to receive at least one message every <code class="code docutils literal"><span class="pre">10s</span></code>. If during the connection (captioner ready or not), you think you may have a large period without sending message, you must send a ping. We will send back a pong.</p>
 </div>
 <div class="section" id="end-connection">
 <h2>End Connection<a class="headerlink" href="#end-connection" title="Permalink to this headline">¶</a></h2>
-<p>When the conversation is finished, the client should send a <code class="code docutils literal notranslate"><span class="pre">end</span></code> message over the websocket:</p>
+<p>When the conversation is finished, the client should send a <code class="code docutils literal"><span class="pre">end</span></code> message over the websocket:</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">end</span></code>.</li>
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">end</span></code>.</li>
 </ul>
 <p>Example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;end&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Json Schema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
   <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:end&quot;</span><span class="p">,</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;End message&quot;</span><span class="p">,</span>
@@ -351,16 +382,16 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Ava will consider as error all the ws connections which are closed without <code class="code docutils literal notranslate"><span class="pre">end</span></code> message.</p>
+<p>Ava will consider as error all the ws connections which are closed without <code class="code docutils literal"><span class="pre">end</span></code> message.</p>
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<p>For various reasons, we may send <code class="code docutils literal notranslate"><span class="pre">error</span></code> messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Error message contains:</p>
+<p>For various reasons, we may send <code class="code docutils literal"><span class="pre">error</span></code> messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Error message contains:</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal notranslate"><span class="pre">error</span></code>.</li>
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">error</span></code>.</li>
 </ul>
 <p>Example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span>
   <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VALIDATION_ERROR&quot;</span><span class="p">,</span>
@@ -372,7 +403,7 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
 </pre></div>
 </div>
 <p>Json Schema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
   <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:error&quot;</span><span class="p">,</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Error message&quot;</span><span class="p">,</span>
@@ -417,7 +448,7 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Ava.
+        &copy; Copyright 2018, Ava
 
     </p>
   </div> 
@@ -440,7 +471,6 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
     <div class="rst-other-versions">
         <dl>
             <dt>Branches</dt>
-            <dd><a href="json-schema/websocket.html">json-schema</a></dd>
             <dd><a href="master/websocket.html">master</a></dd>
         </dl>
     </div>
@@ -449,21 +479,24 @@ For each <code class="code docutils literal notranslate"><span class="pre">blocI
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/index.js"></script>
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/index.js"></script>
+    
 
   
 

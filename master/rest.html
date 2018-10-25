@@ -159,10 +159,10 @@
 <div class="section" id="basics">
 <h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>you must use JSON-encoded bodies for POST request, and therefore set the appropriate header <code class="code docutils literal notranslate"><span class="pre">Content-type:</span> <span class="pre">application/json</span></code>). JSON body should be a hash of attribute key/value pairs (no array, string, number or boolean).</li>
+<li>you must use JSON-encoded bodies for POST request, and therefore set the appropriate header <code class="code docutils literal"><span class="pre">Content-type:</span> <span class="pre">application/json</span></code>). JSON body should be a hash of attribute key/value pairs (no array, string, number or boolean).</li>
 </ul>
 <p>Exemple:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/conversations</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/conversations</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-type</span><span class="o">:</span> <span class="l">application/json</span>
 
 <span class="p">{</span><span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
@@ -186,21 +186,22 @@
 <dl class="post">
 <dt id="post--conversations">
 <code class="descname">POST </code><code class="descname">/conversations</code><a class="headerlink" href="#post--conversations" title="Permalink to this definition">¶</a></dt>
-<dd><p>In order to open start a conversation, you need to perform a <code class="code docutils literal notranslate"><span class="pre">POST</span></code> call on <code class="code docutils literal notranslate"><span class="pre">/conversations</span></code>. You will get in return a conversation object, with a single-use websocket url for audio / transcripts transfer.
+<dd><p>In order to open start a conversation, you need to perform a <code class="code docutils literal"><span class="pre">POST</span></code> call on <code class="code docutils literal"><span class="pre">/conversations</span></code>. You will get in return a conversation object, with a single-use websocket url for audio / transcripts transfer.
 Single-use websocket url are only valid 30s.</p>
 <p><strong>Rrequest</strong>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid value is: <code class="code docutils literal notranslate"><span class="pre">LINEAR16</span></code>.</li>
-<li><strong>sampleRateHertz</strong> (<cite>integer</cite>):  Sample rate in Hertz of the audio data which will be sent. Valid values are: <code class="code docutils literal notranslate"><span class="pre">8000</span></code>, <code class="code docutils literal notranslate"><span class="pre">16000</span></code>.</li>
+<li><strong>encoding</strong> (<cite>string</cite>): Encoding of audio data which will be sent. Valid value is: <code class="code docutils literal"><span class="pre">LINEAR16</span></code>.</li>
+<li><strong>sampleRateHertz</strong> (<cite>integer</cite>):  Sample rate in Hertz of the audio data which will be sent. Valid values are: <code class="code docutils literal"><span class="pre">8000</span></code>, <code class="code docutils literal"><span class="pre">16000</span></code>.</li>
 <li><strong>chunkLengthMs</strong> (<cite>integer</cite>): Duration in ms of the chunks of audio data which will be sent.</li>
-<li><strong>dev</strong> (<cite>boolean</cite>): <cite>optional</cite> - If <cite>true</cite>, then no real captioner will be triggered. A <code class="code docutils literal notranslate"><span class="pre">ready</span></code> event will be sent in the websocket between <code class="code docutils literal notranslate"><span class="pre">2</span></code> and <code class="code docutils literal notranslate"><span class="pre">5</span></code> seconds after the connection initialization, and the following transcripts will be ASR only.</li>
-<li><strong>language</strong> (<cite>string</cite>): <cite>optional</cite> - Language of the conversation (french by default). Valid values are: <code class="code docutils literal notranslate"><span class="pre">fr-FR</span></code>, <code class="code docutils literal notranslate"><span class="pre">en-US</span></code>.</li>
+<li><strong>dev</strong> (<cite>boolean</cite>): <cite>optional</cite> - If <cite>true</cite>, then no real captioner will be triggered. A <code class="code docutils literal"><span class="pre">ready</span></code> event will be sent in the websocket between <code class="code docutils literal"><span class="pre">2</span></code> and <code class="code docutils literal"><span class="pre">5</span></code> seconds after the connection initialization, and the following transcripts will be ASR only.</li>
+<li><strong>language</strong> (<cite>string</cite>): <cite>optional</cite> - Language of the conversation (french by default). Valid values are: <code class="code docutils literal"><span class="pre">fr-FR</span></code>, <code class="code docutils literal"><span class="pre">en-US</span></code>.</li>
 <li><strong>groundTruth</strong> (<cite>string</cite>): <cite>optional</cite> - The ground truth of the text associated to the audio. If provided, the server will return a WER score</li>
 <li><strong>title</strong> (<cite>string</cite>): <cite>optional</cite> - Title of the conversation. Use for debug / log only</li>
+<li><strong>captionerId</strong> (<cite>string</cite>): <cite>optional</cite> - Id of the captioner needed for this convo.</li>
 </ul>
 <p>Example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;LINEAR16&quot;</span><span class="p">,</span>
   <span class="nt">&quot;sampleRateHertz&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>
   <span class="nt">&quot;chunkLengthMs&quot;</span><span class="p">:</span> <span class="mi">100</span>
@@ -208,7 +209,7 @@ Single-use websocket url are only valid 30s.</p>
 </pre></div>
 </div>
 <p>Json Schema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
   <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;postConversationsRequest&quot;</span><span class="p">,</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP POST /conversations Request&quot;</span><span class="p">,</span>
@@ -250,6 +251,10 @@ Single-use websocket url are only valid 30s.</p>
     <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
       <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Title of the conversation. Use for debug / log only&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;captionerId&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Id of the captioner needed for this convo.&quot;</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -269,15 +274,15 @@ Single-use websocket url are only valid 30s.</p>
 <li><strong>id</strong> (<cite>string</cite>): <cite>optional</cite> - Id of the conversation. May be used to establish a second websocket connection (future) or to restart a connection if the first one is closed unexpectedly (future).</li>
 </ul>
 </div></blockquote>
-<p>Typical success response (<code class="code docutils literal notranslate"><span class="pre">201</span></code>):</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p>Typical success response (<code class="code docutils literal"><span class="pre">201</span></code>):</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;wss://scribe.ava.me/ws/5b49d758ec2040000121aaf?5ee3b6618774d422e3b&quot;</span><span class="p">,</span>
   <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5b49d758ec2040000121aaf5&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Typical error response (<code class="code docutils literal notranslate"><span class="pre">400</span></code>):</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p>Typical error response (<code class="code docutils literal"><span class="pre">400</span></code>):</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VALIDATION_ERROR&quot;</span><span class="p">,</span>
     <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -312,7 +317,7 @@ Single-use websocket url are only valid 30s.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Ava.
+        &copy; Copyright 2018, Ava
 
     </p>
   </div> 
@@ -335,7 +340,6 @@ Single-use websocket url are only valid 30s.</p>
     <div class="rst-other-versions">
         <dl>
             <dt>Branches</dt>
-            <dd><a href="../json-schema/rest.html">json-schema</a></dd>
             <dd><a href="rest.html">master</a></dd>
         </dl>
     </div>
@@ -344,21 +348,24 @@ Single-use websocket url are only valid 30s.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/index.js"></script>
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/index.js"></script>
+    
 
   
 

@@ -25,6 +25,14 @@ No audio message should be sent before receiving the :code:`ready` event.
 
 .. ava-schema:: websocket.audio
 
+Play announcement message
+-------------------------
+
+The backend can send :code:`play-announcement-message` to trigger an announcement message to the callee.
+
+.. ava-schema:: websocket.play-announcement-message
+
+
 Transcript
 ----------
 
