@@ -95,6 +95,12 @@ export interface WebsocketMessageError {
     error: Error;
 }
 /**
+ * Play announcement message
+ */
+export interface WebsocketMessagePlayAnnouncementMessage {
+    type: "play-announcement-message";
+}
+/**
  * Ready message
  * Message sent when captioner is ready
  */
@@ -125,5 +131,5 @@ export interface WebsocketMessageTranscript {
     };
 }
 
-export type WebsocketMessage = WebsocketMessageAudio | WebsocketMessageConvoResult | WebsocketMessageEnd | WebsocketMessageError | WebsocketMessageReady | WebsocketMessageTranscript;
+export type WebsocketMessage = WebsocketMessageAudio | WebsocketMessageConvoResult | WebsocketMessageEnd | WebsocketMessageError | WebsocketMessagePlayAnnouncementMessage | WebsocketMessageReady | WebsocketMessageTranscript;
 
