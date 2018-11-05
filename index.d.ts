@@ -49,9 +49,18 @@ export interface PostConversationsRequest {
      */
     title?: string;
     /**
+     * Client id of the conversation. Useful for debug.
+     */
+    id?: string;
+    /**
      * Id of the captioner needed for this convo.
      */
     captionerId?: string;
+    /**
+     * Any metadata userful. Will be saved with the conversation.
+     */
+    metadata?: {
+    };
 }
 /**
  * Audio message !
