@@ -35,9 +35,17 @@
             "type": "string",
             "description": "Title of the conversation. Use for debug / log only"
         },
+        "id": {
+            "type": "string",
+            "description": "Client id of the conversation. Useful for debug."
+        },
         "captionerId": {
             "type": "string",
             "description": "Id of the captioner needed for this convo."
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Any metadata userful. Will be saved with the conversation."
         }
     },
     "required": ["encoding", "sampleRateHertz", "chunkLengthMs"],
