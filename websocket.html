@@ -88,7 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#endpoint">Endpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#captioner-ready">Captioner Ready</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#audio">Audio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#play-announcement-message">Play announcement message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#play-message">Play message</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#transcript">Transcript</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#human-map">Human map</a></li>
 </ul>
@@ -245,35 +245,64 @@ No audio message should be sent before receiving the <code class="code docutils 
 </pre></div>
 </div>
 </div>
-<div class="section" id="play-announcement-message">
-<h2>Play announcement message<a class="headerlink" href="#play-announcement-message" title="Permalink to this headline">¶</a></h2>
-<p>The backend can send <code class="code docutils literal"><span class="pre">play-announcement-message</span></code> to trigger an announcement message to the callee.</p>
+<div class="section" id="play-message">
+<h2>Play message<a class="headerlink" href="#play-message" title="Permalink to this headline">¶</a></h2>
+<p>The backend can send <code class="code docutils literal"><span class="pre">play-message</span></code> to trigger an announcement message to the callee.</p>
 <ul class="simple">
-<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">play-announcement-message</span></code>.</li>
+<li><strong>type</strong> (<cite>string</cite>): <code class="code docutils literal"><span class="pre">play-message</span></code>.</li>
+<li><strong>message.id</strong> (<cite>string</cite>): Id of the message to play. Valid values are: <code class="code docutils literal"><span class="pre">announcement</span></code>, <code class="code docutils literal"><span class="pre">wait</span></code>, <code class="code docutils literal"><span class="pre">repeat</span></code>.</li>
 </ul>
 <p>Example:</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;play-announcement-message&quot;</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;play-message&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;repeat&quot;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Json Schema:</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-06/schema#&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:play-announcement-message&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Play announcement message&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket-message:play-message&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Play message&quot;</span><span class="p">,</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
   <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="s2">&quot;play-announcement-message&quot;</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;const&quot;</span><span class="p">:</span> <span class="s2">&quot;play-message&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Id of the message to play.&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;announcement&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wait&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;repeat&quot;</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;id&quot;</span>
+      <span class="p">]</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&quot;type&quot;</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span>
   <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Messages:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">announcement</span></code> - “cet appel va etre intermedié et peut etre enregistré, etc.”</li>
+<li><code class="code docutils literal"><span class="pre">wait</span></code> - “Un moment s’il vous plait, votre interlocuteur écrit sa reponse qui vous sera lue par une voix de synthèse.”</li>
+<li><code class="code docutils literal"><span class="pre">repeat</span></code> - “Pouvez vous répéter cette derniere phrase?”</li>
+</ul>
 </div>
 <div class="section" id="transcript">
 <h2>Transcript<a class="headerlink" href="#transcript" title="Permalink to this headline">¶</a></h2>
