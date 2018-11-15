@@ -25,13 +25,18 @@ No audio message should be sent before receiving the :code:`ready` event.
 
 .. ava-schema:: websocket.audio
 
-Play announcement message
+Play message
 -------------------------
 
-The backend can send :code:`play-announcement-message` to trigger an announcement message to the callee.
+The backend can send :code:`play-message` to trigger an announcement message to the callee.
 
-.. ava-schema:: websocket.play-announcement-message
+.. ava-schema:: websocket.play-message
 
+Messages:
+
+- :code:`announcement` - "cet appel va etre intermedié et peut etre enregistré, etc."
+- :code:`wait` - "Un moment s’il vous plait, votre interlocuteur écrit sa reponse qui vous sera lue par une voix de synthèse."
+- :code:`repeat` - "Pouvez vous répéter cette derniere phrase?"
 
 Transcript
 ----------

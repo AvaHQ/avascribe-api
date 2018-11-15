@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "websocket-message:play-message",
+    "title": "Play message",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "play-message"
+        },
+        "message": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Id of the message to play.",
+                    "enum": ["announcement", "wait", "repeat"]
+                }
+            },
+            "required": ["id"]
+        }
+    },
+    "required": ["type", "message"],
+    "$$sample": {
+        "type": "play-message",
+        "message": {
+            "id": "repeat"
+        }
+    }
+}
