@@ -104,10 +104,16 @@ export interface WebsocketMessageError {
     error: Error;
 }
 /**
- * Play announcement message
+ * Play message
  */
-export interface WebsocketMessagePlayAnnouncementMessage {
-    type: "play-announcement-message";
+export interface WebsocketMessagePlayMessage {
+    type: "play-message";
+    message: {
+        /**
+         * Id of the message to play.
+         */
+        id: "announcement" | "wait" | "repeat";
+    };
 }
 /**
  * Ready message
@@ -140,5 +146,5 @@ export interface WebsocketMessageTranscript {
     };
 }
 
-export type WebsocketMessage = WebsocketMessageAudio | WebsocketMessageConvoResult | WebsocketMessageEnd | WebsocketMessageError | WebsocketMessagePlayAnnouncementMessage | WebsocketMessageReady | WebsocketMessageTranscript;
+export type WebsocketMessage = WebsocketMessageAudio | WebsocketMessageConvoResult | WebsocketMessageEnd | WebsocketMessageError | WebsocketMessagePlayMessage | WebsocketMessageReady | WebsocketMessageTranscript;
 
