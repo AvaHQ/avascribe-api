@@ -61,6 +61,10 @@ export interface PostConversationsRequest {
      */
     metadata?: {
     };
+    /**
+     * Url to fetch a text to replay. Ex: 'https://ava.com/text.txt'. Can be used only on dev=true mode.
+     */
+    textUrl?: string;
 }
 /**
  * Audio message !
