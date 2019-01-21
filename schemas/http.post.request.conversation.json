@@ -46,6 +46,10 @@
         "metadata": {
             "type": "object",
             "description": "Any metadata userful. Will be saved with the conversation."
+        },
+        "textUrl": {
+            "type": "string",
+            "description": "Url to fetch a text to replay. Ex: 'https://ava.com/text.txt'. Can be used only on dev=true mode."
         }
     },
     "required": ["encoding", "sampleRateHertz", "chunkLengthMs"],
