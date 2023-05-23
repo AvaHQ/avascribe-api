@@ -11,7 +11,7 @@ Captioner Ready
 
 When a captioner is ready to handle the conversation, Ava sends a :code:`ready` message to the client, which contains:
 
-.. ava-schema:: websocket.ready
+.. jsonschema:: ../schemas/websocket.ready.json
 
 At this point, client can start to send audio messages.
 
@@ -23,14 +23,14 @@ Audio
 In order to stream the audio, the client sends :code:`audio` with the audio to transcribe.
 No audio message should be sent before receiving the :code:`ready` event.
 
-.. ava-schema:: websocket.audio
+.. jsonschema:: ../schemas/websocket.audio.json
 
 Play message
 -------------------------
 
 The backend can send :code:`play-message` to trigger an announcement message to the callee.
 
-.. ava-schema:: websocket.play-message
+.. jsonschema:: ../schemas/websocket.play-message.json
 
 Messages:
 
@@ -43,7 +43,7 @@ Transcript
 
 We return transcripts to the client in :code:`transcript` messages:
 
-.. ava-schema:: websocket.transcript
+.. jsonschema:: ../schemas/websocket.transcript.json
 
 If two transcripts are sent with the same `blocId`, only the last one should be considered.
 For each :code:`blocId`, we will send a transcript with a :code:`isFinal` field set to :code:`true`.
@@ -79,7 +79,7 @@ End Connection
 
 When the conversation is finished, the client should send a :code:`end` message over the websocket:
 
-.. ava-schema:: websocket.end
+.. jsonschema:: ../schemas/websocket.end.json
 
 Ava will consider as error all the ws connections which are closed without :code:`end` message.
 
@@ -89,4 +89,4 @@ Errors
 
 For various reasons, we may send :code:`error` messages. Client should expect that the underlying WebSocket connection will be closed by us after sending an error message. Error message contains:
 
-.. ava-schema:: websocket.error
+.. jsonschema:: ../schemas/websocket.error.json
