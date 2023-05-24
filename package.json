@@ -9,6 +9,7 @@
   "scripts": {
     "generate-types": "./generate-types.bash . build/types/index.d.ts",
     "verify-types": "./verify-types.bash . build/types/index.d.ts",
-    "generate-docs": "./generate-docs.bash . build/docs/ava-api"
+    "generate-docs": "./generate-docs.bash . build/docs/ava-api",
+    "open-docs": "yarn generate-docs && open build/docs/ava-api/html/index.html"
   }
 }
