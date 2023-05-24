@@ -1,6 +1,10 @@
-sphinx==1.6.7
+sphinx
+jinja2
+markupsafe
 recommonmark
 sphinx_rtd_theme
 sphinxcontrib-httpdomain
 git+https://github.com/Lingnik/sphinxcontrib-versioning@Lingnik-patch-1
-git+ssh://git@github.com/avahq/jsonschema-toolkit#subdirectory=docgenerator
+# The sphinx-jsonschema package is not yet published on PyPI, so we need to install it from GitHub
+# This version allows for relative imports to the JSON schema files, which we use extensively
+git+https://github.com/lnoor/sphinx-jsonschema.git

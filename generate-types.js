@@ -53,4 +53,11 @@ async function main(files) {
     console.log(result);
 }
 
-main(yargs.argv._);
+main(yargs.argv._)
+    .then(() => {
+        process.exit(0);
+    })
+    .catch((e) => {
+        console.error(e);
+        process.exit(1);
+    });

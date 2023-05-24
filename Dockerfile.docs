@@ -1,0 +1,29 @@
+FROM python:slim
+
+# not expecting a cache mechanism like the one in buildx, the base image includes
+# this config file that essentially purges the cache on every install operation
+# which is why we have to remove this config to take advantage of the host's cache
+RUN rm /etc/apt/apt.conf.d/docker-clean
+
+RUN \
+    # holds the package _indexes_
+    --mount=type=cache,target=/var/lib/apt/lists \
+    # holds the package _contents_
+    --mount=type=cache,target=/var/cache/apt/archives \
+    buildDeps='git make ssh' \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends $buildDeps \
+    && apt-get purge -y --auto-remove
+
+# install dependencies
+RUN --mount=type=cache,target=/root/.cache pip3 install --upgrade pip
+COPY ./requirements.txt /tmp/requirements.txt
+
+
+# download public key for github.com
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN --mount=type=cache,target=/root/.cache pip3 install -r /tmp/requirements.txt
+
+WORKDIR /app
+
+CMD sphinx-build -M html source/ build/ -v
