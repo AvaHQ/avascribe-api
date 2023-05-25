@@ -47,7 +47,7 @@ GID=$(id -g)
 GENERATE_SCRIPT=$(readlink -f ${BASH_SOURCE[0]})
 PRIVATE_MODULES_FOLDER=$(dirname "$GENERATE_SCRIPT")
 DOCKERFILE="$PRIVATE_MODULES_FOLDER/Dockerfile"
-docker build -t "ava-api-builder" -f "$DOCKERFILE" "$PRIVATE_MODULES_FOLDER"
+docker build -t "avascribe-api-builder" -f "$DOCKERFILE" "$PRIVATE_MODULES_FOLDER"
 
 # need to use absolute paths for the volumes
 ABS_INPUT_FOLDER=$(readlink -f "$INPUT_FOLDER")
@@ -59,7 +59,7 @@ docker run \
     --user "$UID:$GID" \
     --volume "$ABS_TMP_DIR:/output" \
     --volume "$ABS_INPUT_FOLDER/schemas:/schemas" \
-    "ava-api-builder"
+    "avascribe-api-builder"
 
 # make sure the target folder exists
 mkdir -p "$(dirname "$OUTPUT_FILE")"
