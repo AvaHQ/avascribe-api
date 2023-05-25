@@ -3,7 +3,7 @@ Errors
 
 Errors object could be sent in an HTTP response or in a websocket message. Error object contains:
 
-.. ava-schema:: error
+.. jsonschema:: ../schemas/error.json
 
 Validation Error
 ----------------

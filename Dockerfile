@@ -7,7 +7,7 @@ COPY yarn.lock ./yarn.lock
 
 RUN yarn install --frozen
 
-COPY ./index.js ./index.js
+COPY generate-types.js ./generate-types.js
 # to use this container, we'll want to mount the /output and the /schema directories
 
-CMD node ./index.js /schemas/* > /output/index.d.ts
+CMD node ./generate-types.js /schemas/* > /output/index.d.ts

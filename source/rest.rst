@@ -35,7 +35,7 @@ Conversations
 
    **Rrequest**:
 
-    .. ava-schema:: http.post.request.conversation
+    .. jsonschema:: ../schemas/http.post.request.conversation.json
 
 
 
